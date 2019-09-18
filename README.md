@@ -63,6 +63,9 @@
         + selecting the 'new game' on the death screen takes you to the Main menu  
          ++ fixed (python turned out to use '__main__ import' to use initializer script methods)
 
+<details><summary>ALPHA STAGE CHANGELOG</summary>
+<p>
+
 # (Alpha v0.013):
 ### [CODE]:
         + error caught by the exception is now saved to the file
@@ -165,3 +168,5 @@
 
 # (Alpha v0.01):
         + the first playable version
+</p>
+</details>
