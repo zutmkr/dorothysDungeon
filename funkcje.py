@@ -206,8 +206,6 @@ def w(gr, maps):
         try:
             if maps.mapa[gr.pozycja[0] - 1][gr.pozycja[1]].event:
                 event(gr, maps)
-            if maps.mapa[gr.pozycja[0] - 1][gr.pozycja[1]].przedmiot:
-                gr.dodaj_do_plecak()
         except:
             pass
         maps.mapa[gr.pozycja[0] - 1][gr.pozycja[1]] = gr
@@ -221,8 +219,6 @@ def s(gr, maps):
         try:
             if maps.mapa[gr.pozycja[0] + 1][gr.pozycja[1]].event:
                 event(gr, maps)
-            if maps.mapa[gr.pozycja[0] + 1][gr.pozycja[1]].przedmiot:
-                gr.dodaj_do_plecak()
         except:
             pass
         maps.mapa[gr.pozycja[0] + 1][gr.pozycja[1]] = gr
@@ -236,8 +232,6 @@ def a(gr, maps):
         try:
             if maps.mapa[gr.pozycja[0]][gr.pozycja[1] - 1].event:
                 event(gr, maps)
-            if maps.mapa[gr.pozycja[0]][gr.pozycja[1] - 1].przedmiot:
-                gr.dodaj_do_plecak()
         except:
             pass
         maps.mapa[gr.pozycja[0]][gr.pozycja[1] - 1] = gr
@@ -251,8 +245,6 @@ def d(gr, maps):
         try:
             if maps.mapa[gr.pozycja[0] + 1][gr.pozycja[1] + 1].event:
                 event(gr, maps)
-            if maps.mapa[gr.pozycja[0]][gr.pozycja[1] + 1].przedmiot:
-                gr.dodaj_do_plecak()
         except:
             pass
         maps.mapa[gr.pozycja[0]][gr.pozycja[1] + 1] = gr
@@ -355,7 +347,11 @@ def rozpocznij_walke(gr):
                 ile_wygral = 100.0 * 1.25 * podziemia.poziom_p
                 
             gr.zloto += ile_wygral
-            print("You receive ",ile_wygral, " gold.")
+            if random.choice(prawda_falsz):
+                gr.dodaj_do_plecak()
+                print("You receive {0} gold and {1}.".format(ile_wygral, gr.lista[-1].nazwa))
+            else:
+                print("You receive ", ile_wygral, " gold.")
             gr.punkty += 5
             getch()
             return

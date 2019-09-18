@@ -8,6 +8,7 @@ from tkinter import ttk
 from datetime import datetime
 from podziemia import Mapa
 from tkinter import filedialog
+from main import nowa_gra
 poziom_pgen = 1
 mapsgen = 0
 
@@ -47,12 +48,7 @@ def zagraj(poziom_pgen, wielkosc_mapygen, punkty_zycia, sila, okno):
         messagebox.showinfo("BŁĄD", "Wygeneruj wpierw mapę, by w nią zagrać!")
     else:    
         okno.destroy()
-        if __name__ == "__main__":
-            from main import nowa_gra
-            nowa_gra(poziom_pgen, wielkosc_mapygen, punkty_zycia, sila)
-        else:
-            from __main__ import nowa_gra
-            nowa_gra(poziom_pgen, wielkosc_mapygen, punkty_zycia, sila)
+        nowa_gra(poziom_pgen, wielkosc_mapygen, punkty_zycia, sila)
 
         
 def generator():

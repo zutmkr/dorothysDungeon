@@ -1,20 +1,12 @@
 
 ![Logo](https://github.com/zutmkr/Studia/blob/master/praca_inz/static/logo.PNG)
 
-NOTE! This code is final... development has moved [here.](https://github.com/zutmkr/Studia/tree/master/praca_mag "Dorothy's Dungeon 2")
-
-
-
-
-
-
-
-
-
-
-
-
-
+## (Beta v0.2.1.190918.1):
+### [CODE REFACTOR]:
+        + player no longer receives items when he move to an unvisited room,
+        + there is a chance player receive item after defeating an enemy
+        + updated .gitignore
+        + minor code optimizations
 
 ## (Beta v0.2.1.190918):
 ### [CODE REFACTOR]:

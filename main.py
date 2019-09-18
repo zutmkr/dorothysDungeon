@@ -179,5 +179,5 @@ def opcje():
             elif od >=48 and do <=54:
                 extra()
     
-    
-menu_glowne()
+if __name__ == "__main__":
+    menu_glowne()

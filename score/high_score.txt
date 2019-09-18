@@ -8,9 +8,3 @@
          Roland    1              13
          Xavier    2              32
          Barbar    1              9
-
-         dsd       2              2
-         jhagdjh   3              53
-         Pawel     1              17
-         sd        1              10
-         sda       1              11
