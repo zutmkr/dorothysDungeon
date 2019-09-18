@@ -1,6 +1,14 @@
 
 ![Logo](https://github.com/zutmkr/Studia/blob/master/praca_inz/static/logo.PNG)
 
+# (Beta v0.2.1.190918.3):
+### [CODE REFACTOR]:
+### [MAP GENERATOR v0.05]:
+        + updated load_map to point directly to map folder  
+        + fixed import loop  
+        + fixed typo in Item() module  
+        + map generator can be launch independently
+
 # (Beta v0.2.1.190918.2):
 ### [CODE REFACTOR]:
         + updated .gitignore

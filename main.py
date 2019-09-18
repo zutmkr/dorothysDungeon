@@ -2,7 +2,7 @@
 import os
 import sys
 import pickle
-import generator_map
+from generator_map import generator, mapsgen
 import podziemia
 import uczestnicy
 import funkcje
@@ -66,7 +66,7 @@ def nowa_gra(poziom_pgen = None, wielkosc_mapygen = None, punkty_zycia = None, s
 
     if poziom_pgen is not None or wielkosc_mapygen is not None or punkty_zycia is not None:
         podziemia.poziom_p = poziom_pgen.get()
-        maps = generator_map.mapsgen
+        maps = mapsgen
         gr.pz = punkty_zycia.get()
         gr.s = sila.get()
     else:
@@ -137,7 +137,7 @@ def extra():
             rysuj_oddo("lang/PL/menu_glowne.txt",od,do)
         elif inp == 'k':
             if od >=24 and do <=28:
-                generator_map.generator()
+                generator()
             elif od >=28 and do <=34:
                 opcje()
             elif od >=34 and do <=39:

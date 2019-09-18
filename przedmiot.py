@@ -2,7 +2,7 @@
 import random
 import podziemia
 
-stuff = ['sword', 'armor', 'potion', 'shoes', 'crossbow', 'tiara', 'ring', 'amulet', 'shield', 'belt', 'glovese', 'pet']
+stuff = ['sword', 'armor', 'potion', 'shoes', 'crossbow', 'tiara', 'ring', 'amulet', 'shield', 'belt', 'gloves', 'pet']
 dobry_prefix = ['good', 'magic', 'rare', 'legendary']
 zly_prefix = ['common', 'broken', 'rusty', 'cursed']
 

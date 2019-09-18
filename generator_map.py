@@ -8,10 +8,10 @@ from tkinter import ttk
 from datetime import datetime
 from podziemia import Mapa
 from tkinter import filedialog
-from main import nowa_gra
+
 NR_OF_LVL_GEN = 1
 mapsgen = 0
-WINDOW_TITLE = "Dorothy\'s Dungeon Map Generator v0.04"
+WINDOW_TITLE = "Dorothy\'s Dungeon Map Generator v0.05"
 WINDOW_RESOLUTION = "630x500"
 
 def licz_pliki(adres):
@@ -29,7 +29,7 @@ def wyjdz(okno):
 
 
 def wczytaj_mape(mapa_odkryta):
-    d = filedialog.askopenfilename() 
+    d = filedialog.askopenfilename(initialdir = "./mapy") 
     f = open(d, 'r', encoding="utf8")
     mapa_odkryta.delete(1.0, END)
     mapa_odkryta.insert(END, f.read())
@@ -50,6 +50,7 @@ def zagraj(poziom_pgen, wielkosc_mapygen, punkty_zycia, sila, okno):
         messagebox.showinfo("ERROR", "Generate map first to play it!")
     else:    
         okno.destroy()
+        from main import nowa_gra
         nowa_gra(poziom_pgen, wielkosc_mapygen, punkty_zycia, sila)
 
         
