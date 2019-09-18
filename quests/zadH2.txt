@@ -1,0 +1,19 @@
+
+                                   .---.
+                                  /  .  \
+                                 |\_/|   |
+                                 |   |  /|
+  .------------------------------------' |
+ /  .-.             (Merchant)           |
+|  /   \    The gargoyles are still      |
+| |\_.  |   annoying life of a trader.   |
+|\|  | /|                                |
+| `---' |   Destroy two and you will     |
+|       |      receive an AWARD          |
+|       |                                |
+|       |     Killed Gargoyles (0/2)     /
+|       |------------------------------'
+\       |
+ \     /
+  `---'
+

@@ -1,0 +1,32 @@
+[ASSIGNMENT No 1]
+I see that you are POWERFUL and GREAT warrior.
+Maybe he would sacrifice a moment and do some task for me?
+
+[YES]:
+     A dragon rider prowls here and steals from me
+     goods. Pound him for me, and I give you
+     unique item!
+    
+[NO]:
+     It's hard for good help today ...
+    
+[AFTER]:
+     Now my part of the contract.
+     Here's your reward ...
+    
+////////////////////////////////////////////////// //////////////////
+[ASS. No. 2]
+I see that you are POWERFUL and GREAT warrior.
+Maybe he would sacrifice a moment and do a favor for me
+
+[YES]:
+     I need a stone powder. Two gargoyles should be
+     enough.
+    
+[NO]:
+     ...
+    
+    
+[AFTER]:
+     You are here and I see that you have what I asked for.
+     I remember your deeds. Thanks to the warrior.

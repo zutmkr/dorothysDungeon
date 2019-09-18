@@ -1,0 +1,19 @@
+
+                                   .---.
+                                  /  .  \
+                                 |\_/|   |
+                                 |   |  /|
+  .------------------------------------' |
+ /  .-.             (Merchant)           |
+|  /   \    From now on the map you can  |
+| |\_.  |   meet Jezdziec.               |
+|\|  | /|                                |
+| `---' |   Destroy him and you will     |
+|       |       receive an AWARD         |
+|       |                                |
+|       |    Destroyed Jezdziec (1/1)    /
+|       |------------------------------'
+\       |
+ \     /
+  `---'
+

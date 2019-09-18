@@ -1,0 +1,32 @@
+[ASSIGNMENT No 1]
+I see that you are POWERFUL and GREAT warrior.
+Maybe he would sacrifice a moment and do some task for me?
+
+[YES]:
+     Bring me five legendary items, and I give
+     You more life points.
+    
+[NO]:
+     It's hard to ...
+     Watch out for the warrior. See you later.
+    
+[AFTER]:
+     I see that you have found five legendary items.
+     Here's your reward.
+    
+/////////////////////////////////////////////////////////////////////
+[ASS. No. 2]
+I see that you are POWERFUL and GREAT warrior.
+How about a small quest?
+
+[YES]:
+     Apparently, magical creatures can be found in these dungeons
+     kill three of them, and I will have more healing power.
+    
+[NO]:
+     Until the next meeting, so ...
+    
+    
+[AFTER]:
+     Excellently.
+     From now on I will be more powerful.
