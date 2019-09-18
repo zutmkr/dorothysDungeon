@@ -28,6 +28,9 @@
 ### [CODE REFACTOR]:
         + initial commit
 
+<details><summary>BETA STAGE CHANGELOG</summary>
+<p>
+
 # (Beta v0.2.1.180308):
 ### [CODE + HOTFIX]:
         + fixed a bug that prevented the game from running (missing file)  
@@ -62,6 +65,8 @@
 ### [KNOWN BUGS]:
         + selecting the 'new game' on the death screen takes you to the Main menu  
          ++ fixed (python turned out to use '__main__ import' to use initializer script methods)
+</p>
+</details>
 
 <details><summary>ALPHA STAGE CHANGELOG</summary>
 <p>
