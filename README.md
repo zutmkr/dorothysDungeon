@@ -3,22 +3,22 @@
 
 # (Beta v0.2.1.190918.2):
 ### [CODE REFACTOR]:
-        + updated .gitignore 
-### [MAP GENERATOR v0.04]: 
-        + updated translations  
-        + variable naming refactored and translated 
+        + updated .gitignore
+### [MAP GENERATOR v0.04]:
+        + updated translations  
+        + variable naming refactored and translated  
         + added more map sizes 
 
 # (Beta v0.2.1.190918.1):
 ### [CODE REFACTOR]:
-        + player no longer receives items when he move to an unvisited room  
+        + player no longer receives items when he move to an unvisited room  
         + there is a chance player receive item after defeating an enemy  
         + updated .gitignore  
         + minor code optimizations  
 
 # (Beta v0.2.1.190918.0):
 ### [CODE REFACTOR]:
-        + initial commit
+        + initial commit
 
 # (Beta v0.2.1.180308):
 ### [CODE + HOTFIX]:
@@ -30,7 +30,7 @@
 # (Beta v0.2):
 ### [CODE]:
         + corrected file encoding (\ EN \ menu_enabled_test.txt)  
-        + added instructions to close the file in the drawujobrazy module  
+        + added instructions to close the file in the rysujobrazy module  
         + light code ordering  
 ### [NEW FEATURE]:
         + unlocked option ABOUT GAME
