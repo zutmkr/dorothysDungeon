@@ -22,14 +22,9 @@ class Mapa():
 
         # tworzenie mapy gry
         if wielkosc_mapygen is not None:
-            if wielkosc_mapygen.get() == 7:
-                wielkosc_mapy = [0,0,0,0,0,0,0]
-            elif wielkosc_mapygen.get() == 9:
-                wielkosc_mapy = [0,0,0,0,0,0,0,0,0]
-            elif wielkosc_mapygen.get() == 11:
-                wielkosc_mapy = [0,0,0,0,0,0,0,0,0,0,0]
+            wielkosc_mapy = [0] * wielkosc_mapygen.get()
         else:
-            wielkosc_mapy = random.choice(rodzaj_mapy)
+            wielkosc_mapy = [0] * random.randint(7, 14)
 
         wybrana = wielkosc_mapy
         self.mapa = []  # ATR: MAPA
