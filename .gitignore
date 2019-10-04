@@ -107,4 +107,5 @@ venv.bak/
 .idea/
 .vs/
 .vscode/
+mapy/
 score/high_score.txt

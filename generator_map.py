@@ -2,45 +2,47 @@
 import os, os.path
 import random
 import uczestnicy
+import fnmatch
 from tkinter import *
 from tkinter import messagebox
 from tkinter import ttk
-from datetime import datetime
+from datetime import date
 from podziemia import Mapa
 from tkinter import filedialog
 
-NR_OF_LVL_GEN = 1
 mapsgen = 0
-WINDOW_TITLE = "Dorothy\'s Dungeon Map Generator v0.05"
+WINDOW_TITLE = f"Dorothy's Dungeon Map Generator v0.06"
 WINDOW_RESOLUTION = "630x500"
 
 def licz_pliki(adres):
-    ile = 0
+    count = 0
     for f in os.listdir(adres):
         if os.path.isfile(os.path.join(adres, f)):
-            ile += 1
-    return ile
+            count += 1
+    return count
 
-
-def wyjdz(okno):
+def exitGenerator(window):
     global mapsgen
     mapsgen = 0
-    okno.destroy()
-
+    window.destroy()
 
 def wczytaj_mape(mapa_odkryta):
-    d = filedialog.askopenfilename(initialdir = "./mapy") 
+    d = filedialog.askopenfilename(initialdir="./mapy", ) 
     f = open(d, 'r', encoding="utf8")
     mapa_odkryta.delete(1.0, END)
     mapa_odkryta.insert(END, f.read())
     f.close()
 
-
-def zapisz_mape(mapa_odkryta):
-    adres = './mapy'
-    a = (str(datetime.now())).split()
-    f = open('mapy/' + a[0]+ '_' + str(licz_pliki(adres)) + '.map', 'w', encoding="utf8")
-    f.write(mapa_odkryta.get("1.0", "end-1c"))
+def zapisz_mape(map_view):
+    file_count = len(fnmatch.filter(os.listdir("./mapy"), '*.map'))
+    handler = filedialog.asksaveasfile(
+        initialdir="./mapy", 
+        defaultextension=".map",
+        initialfile=f"{date.today()}_{file_count}",
+        filetypes=(("Map files", "*.map"), ("All files", "*.*")),
+        title="Save your map.").name
+    f = open(handler, 'w')
+    f.write(map_view.get("1.0", "end-1c"))
     f.close()
 
 
@@ -52,8 +54,7 @@ def zagraj(poziom_pgen, wielkosc_mapygen, punkty_zycia, sila, okno):
         okno.destroy()
         from main import nowa_gra
         nowa_gra(poziom_pgen, wielkosc_mapygen, punkty_zycia, sila)
-
-        
+      
 def generator():
     def losuj():
         if random_enabled.get() == 1:    
@@ -136,9 +137,9 @@ def generator():
                    
     window = Tk()
     global NR_OF_LVL_GEN
-
     window.title(WINDOW_TITLE)
     window.geometry(WINDOW_RESOLUTION)
+
 
     f = LabelFrame(window, text='GENERATED MAP', labelanchor='n')
     f.grid(columnspan=3, row=0)
@@ -154,8 +155,7 @@ def generator():
     c = Checkbutton(window, text='Randomize all parameters', variable=random_enabled, command=losuj)
     c.grid(column=6, row=3)
 
-    NR_OF_LVL_GEN = IntVar()
-    NR_OF_LVL_GEN.set(1)
+    NR_OF_LVL_GEN = IntVar(value=1)
     s = ttk.Combobox(f2, width=7, textvariable=NR_OF_LVL_GEN, state="readonly")
     s['values'] = (1, 2, 3, 4, 5, 6, 7, 8, 9)
     s.grid(column=2, row=2)
@@ -163,8 +163,7 @@ def generator():
     w1 = Label(f2, text="Map size  ")
     w1.grid(column=1, row=3)
 
-    map_size = IntVar()
-    map_size.set(7)
+    map_size = IntVar(value=7)
     s1 = ttk.Combobox(f2, width=7, textvariable=map_size, state='readonly')
     s1['values'] = (7, 8, 9, 10, 11, 12, 13, 14)
     s1.grid(column=2, row=3)
@@ -172,18 +171,16 @@ def generator():
     w2 = Label(f2, text="Hero Life  ")
     w2.grid(column=1, row=4)
 
-    hit_points = IntVar()
-    hit_points.set(39)
+    hit_points = IntVar(value=39)
     hp = ttk.Combobox(f2, width=7, textvariable=hit_points, state='readonly')
     hp['values'] = (39, 60, 100)
     hp.grid(column=2, row=4)
     
     
-    w3 = Label(f2, text="Hero Strenght ")
+    w3 = Label(f2, text="Hero Strength ")
     w3.grid(column=1, row=5)
     
-    sila = IntVar()
-    sila.set(15)
+    sila = IntVar(value=15)
     ps = ttk.Combobox(f2, width=7, textvariable=sila, state='readonly')
     ps['values'] = (15, 30, 50)
     ps.grid(column=2, row=5)
@@ -200,7 +197,7 @@ def generator():
     b3 = Button(window, text='PLAY', bd=4, width=15, height=2, bg="light blue", command=lambda: zagraj(NR_OF_LVL_GEN, map_size, hit_points, sila, window))
     b3.grid(column=6, row=2)
 
-    b4 = Button(window, text='EXIT', bd=8, width=20, height=5, command=lambda: wyjdz(window))
+    b4 = Button(window, text='EXIT', bd=8, width=20, height=5, command=lambda: exitGenerator(window))
     b4.grid(column=7, row=7)
 
     b5 = Button(window, text='LOAD MAP', bd=5, width=20, height=2, command=lambda: wczytaj_mape(mapa_odkryta))

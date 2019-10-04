@@ -1,6 +1,15 @@
 
 ![Logo](https://github.com/zutmkr/Studia/blob/master/praca_inz/static/logo.PNG)
 
+# (Beta v0.2.1.191004.0):
+### [CODE REFACTOR]:
+### [MAP GENERATOR v0.06]:
+        + removed unnecessary code   
+        + redone save_map() function 
+        + code translation in progress...  
+### [MISC]:
+        + updated .gitignore  
+
 # (Beta v0.2.1.190918.3):
 ### [CODE REFACTOR]:
 ### [MAP GENERATOR v0.05]:
@@ -11,11 +20,12 @@
 
 # (Beta v0.2.1.190918.2):
 ### [CODE REFACTOR]:
-        + updated .gitignore
 ### [MAP GENERATOR v0.04]:
         + updated translations  
         + variable naming refactored and translated  
-        + added more map sizes 
+        + added more map sizes  
+### [MISC]:
+        + updated .gitignore          
 
 # (Beta v0.2.1.190918.1):
 ### [CODE REFACTOR]:
