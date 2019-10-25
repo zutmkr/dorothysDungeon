@@ -109,3 +109,4 @@ venv.bak/
 .vscode/
 mapy/
 score/high_score.txt
+save/

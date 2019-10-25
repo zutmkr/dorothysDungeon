@@ -13,7 +13,7 @@ def rysuj_animacja_ciag(adres, s):
     try:
         fp = open(adres, encoding="utf8")
         for i, line in enumerate(fp):
-            print(line, end='')
+            print(f"{line}", end='')
             sleep(s)
     except Exception as e:
         logger.error(e)             
@@ -23,7 +23,7 @@ def rysuj_animacja_ciag(adres, s):
 def rysuj(adres):
     try:
         with open(adres, encoding="utf8") as plik:
-            print(plik.read())   
+            print(f"{plik.read()}")   
     except Exception as e:
         logger.error(e)        
     plik.close()    
@@ -34,7 +34,7 @@ def rysuj_oddo(adres,od,do):
         with open(adres, encoding="utf8") as plik:
             lines = islice(plik, od, do)
             for line in lines:
-                print(line)
+                print(f"{line}")
     except Exception as e:
         logger.error(e)             
     plik.close() 

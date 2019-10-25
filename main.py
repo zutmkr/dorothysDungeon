@@ -2,7 +2,7 @@
 import os
 import sys
 import pickle
-from generator_map import generator, mapsgen
+from generator_map import generator
 import podziemia
 import uczestnicy
 import funkcje
@@ -55,10 +55,10 @@ def menu_glowne():
                 wyjdz_z_gry()
    
    
-def nowa_gra(poziom_pgen = None, wielkosc_mapygen = None, punkty_zycia = None, sila = None):
+def nowa_gra(poziom_pgen = None, wielkosc_mapygen = None, punkty_zycia = None, sila = None, mapsgen = None):
     gr = uczestnicy.Gracz()
     while gr.imie == '':
-        gr.imie = input("ENTER HERO NAME\n\t")
+        gr.imie = input("ENTER HERO NAME: ")
         if len(gr.imie) > 9:
             print('NAME TOO LONG. MAX 9 CHARS')
             gr.imie = ''

@@ -4,36 +4,28 @@ import random
 import uczestnicy
 import fnmatch
 from tkinter import *
-from tkinter import messagebox
-from tkinter import ttk
+from tkinter import messagebox, ttk, filedialog
 from datetime import date
 from podziemia import Mapa
-from tkinter import filedialog
+
 
 mapsgen = 0
-WINDOW_TITLE = f"Dorothy's Dungeon Map Generator v0.06"
+WINDOW_TITLE = f"Dorothy's Dungeon Map Generator v0.07"
 WINDOW_RESOLUTION = "630x500"
-
-def licz_pliki(adres):
-    count = 0
-    for f in os.listdir(adres):
-        if os.path.isfile(os.path.join(adres, f)):
-            count += 1
-    return count
 
 def exitGenerator(window):
     global mapsgen
     mapsgen = 0
     window.destroy()
 
-def wczytaj_mape(mapa_odkryta):
+def loadMap(mapa_odkryta):
     d = filedialog.askopenfilename(initialdir="./mapy", ) 
     f = open(d, 'r', encoding="utf8")
     mapa_odkryta.delete(1.0, END)
     mapa_odkryta.insert(END, f.read())
     f.close()
 
-def zapisz_mape(map_view):
+def saveMap(map_view):
     file_count = len(fnmatch.filter(os.listdir("./mapy"), '*.map'))
     handler = filedialog.asksaveasfile(
         initialdir="./mapy", 
@@ -46,14 +38,13 @@ def zapisz_mape(map_view):
     f.close()
 
 
-def zagraj(poziom_pgen, wielkosc_mapygen, punkty_zycia, sila, okno):
-    global mapsgen
+def playMap(poziom_pgen, wielkosc_mapygen, punkty_zycia, sila, okno):
     if mapsgen == 0:
         messagebox.showinfo("ERROR", "Generate map first to play it!")
     else:    
         okno.destroy()
         from main import nowa_gra
-        nowa_gra(poziom_pgen, wielkosc_mapygen, punkty_zycia, sila)
+        nowa_gra(poziom_pgen, wielkosc_mapygen, punkty_zycia, sila, mapsgen)
       
 def generator():
     def losuj():
@@ -78,7 +69,7 @@ def generator():
             ps['values'] = (15, 30, 50)
             ps.config(state="readonly")
 
-    def generuj_mape():
+    def generateMap():
         global mapsgen
         if random_enabled.get() == 1:
             s.set(random.randint(1, 9))
@@ -180,27 +171,27 @@ def generator():
     w3 = Label(f2, text="Hero Strength ")
     w3.grid(column=1, row=5)
     
-    sila = IntVar(value=15)
-    ps = ttk.Combobox(f2, width=7, textvariable=sila, state='readonly')
+    strength = IntVar(value=15)
+    ps = ttk.Combobox(f2, width=7, textvariable=strength, state='readonly')
     ps['values'] = (15, 30, 50)
     ps.grid(column=2, row=5)
 
     mapa_odkryta = Text(f, font=('Times', '12'), width=17, height=12)
     mapa_odkryta.grid()
 
-    b1 = Button(window, text='GENERATE', bd=4, width=15, height=2, command=generuj_mape)
+    b1 = Button(window, text='GENERATE', bd=4, width=15, height=2, command=generateMap)
     b1.grid(column=5, row=2)
 
-    b2 = Button(window, text='SAVE MAP', bd=4, width=15, height=2, command=lambda: zapisz_mape(mapa_odkryta))
+    b2 = Button(window, text='SAVE MAP', bd=4, width=15, height=2, command=lambda: saveMap(mapa_odkryta))
     b2.grid(column=5, row=3)
 
-    b3 = Button(window, text='PLAY', bd=4, width=15, height=2, bg="light blue", command=lambda: zagraj(NR_OF_LVL_GEN, map_size, hit_points, sila, window))
+    b3 = Button(window, text='PLAY', bd=4, width=15, height=2, bg="light blue", command=lambda: playMap(NR_OF_LVL_GEN, map_size, hit_points, strength, window))
     b3.grid(column=6, row=2)
 
     b4 = Button(window, text='EXIT', bd=8, width=20, height=5, command=lambda: exitGenerator(window))
     b4.grid(column=7, row=7)
 
-    b5 = Button(window, text='LOAD MAP', bd=5, width=20, height=2, command=lambda: wczytaj_mape(mapa_odkryta))
+    b5 = Button(window, text='LOAD MAP', bd=5, width=20, height=2, command=lambda: loadMap(mapa_odkryta))
     b5.grid(column=2, row=2)
 
 

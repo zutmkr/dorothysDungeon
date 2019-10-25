@@ -1,6 +1,16 @@
 
 ![Logo](https://github.com/zutmkr/Studia/blob/master/praca_inz/static/logo.PNG)
 
+# (Beta v0.2.1.191025.0):
+### [CODE REFACTOR]: 
+        + Python 3.8 support  
+        + massive performance boost  
+        + formatting tweaks  
+### [MAP GENERATOR v0.07]:  
+        + code translation in progress...  
+### [MISC]:
+        + updated .gitignore  
+
 # (Beta v0.2.1.191004.0):
 ### [CODE REFACTOR]:
 ### [MAP GENERATOR v0.06]:
