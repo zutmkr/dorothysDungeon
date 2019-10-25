@@ -13,41 +13,41 @@
     ** *MAIN MENU* **
           NEW GAME
          CONTINUE
-     -> [EXTRA]
+     ->   [EXTRA]
         QUIT GAME
 
     ** *MAIN MENU* **
           NEW GAME
          CONTINUE
            EXTRA
-     -> [QUIT FROM GAME]
+     -> [QUIT GAME]
      
        ** * EXTRA * **
      -> [DUNGEON EDITOR]
-           OPTIONS
-           BACK
+          OPTIONS
+          RETURN
      
        ** * EXTRA * **
         DUNGEON EDITOR
-     -> [OPTIONS]
-           BACK
+     ->   [OPTIONS]
+           RETURN
      
        ** * EXTRA * **
         DUNGEON EDITOR
            OPTIONS
-     -> [RETURN]
+     ->   [RETURN]
      
        ** *OPTIONS* **
      -> [GAME LANGUAGE] (Not yet available)
           ABOUT GAME
-           BACK
+           RETURN
            
        ** *OPTIONS* **
-      GAME LANGUAGE (Not yet available)
+        GAME LANGUAGE (Not yet available)
      -> [ABOUT GAME]
-           BACK
+           RETURN
      
        ** *OPTIONS* **
-      GAME LANGUAGE (Not yet available)
+        GAME LANGUAGE (Not yet available)
           ABOUT GAME
      ->   [RETURN]

@@ -108,5 +108,5 @@ venv.bak/
 .vs/
 .vscode/
 mapy/
-score/high_score.txt
+score/
 save/

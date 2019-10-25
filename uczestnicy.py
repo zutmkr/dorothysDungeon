@@ -118,9 +118,9 @@ class Gracz:
             print('\t\t\t\t\t\t\tw - arrow up')
             print('\t\t\t\t\t\t\ts - arrow down')
             if type(self) is Handlarz: 
-                print('\t\tBUY\t\t\t\tk - buy item')
+                print('\t\tBUY\t\t\t\t\tk - buy item')
             else:
-                print('\t\tSELL\t\t\t\tk - sell item')
+                print('\t\tSELL\t\t\t\t\tk - sell item')
             print('\t\t\t\t\t\t\t8 - go back to the conversation with the trader')
             if type(self) is Handlarz:
                 print('\t\tYour gold:', kto.zloto, '\n')

@@ -205,13 +205,13 @@ class Mapa():
                             print('8', end='')
 
         print('\t\t\t\t\t\tINSTRUCTIONS')
-        print('\t\t\t\t\t\t\t8 - PLAYER\tw - go up')
-        print('\t\t\t\t\t\t\t_ - OPEN ROOM\ts - go down')
-        print('\t\t\t\t\t\t\t# - CLOSED ROOM\ta - go left')
-        print('\t\t\t\t\t\t\tX - EXIT\td - go right')
-        print('\t\t\t\t\t\t\t\t\tc - show player stats and quests')
-        print('\t\t\t\t\t\t\t\t\ti - show inventory')
-        print('\n\t\t\t\t\t\t\t\t\t\t` - exit game (game save)')
+        print('\t\t\t\t\t\t8 - PLAYER\tw - go up')
+        print('\t\t\t\t\t\t_ - OPEN ROOM\ts - go down')
+        print('\t\t\t\t\t\t# - CLOSED ROOM\ta - go left')
+        print('\t\t\t\t\t\tX - EXIT\td - go right')
+        print('\t\t\t\t\t\t\t\tc - show player stats and quests')
+        print('\t\t\t\t\t\t\t\ti - show inventory')
+        print('\n\t\t\t\t\t\t\t\t\t` - exit game (game save)')
         print('\tMap nr: ', ile_map)
 
     def stworz_nowa_mape(self,gr):

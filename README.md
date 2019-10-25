@@ -1,6 +1,12 @@
 
 ![Logo](https://github.com/zutmkr/Studia/blob/master/praca_inz/static/logo.PNG)
 
+# (Beta v0.2.1.191025.1):
+### [CODE REFACTOR]: 
+        + formatting tweaks  
+### [MISC]:
+        + updated .gitignore  
+
 # (Beta v0.2.1.191025.0):
 ### [CODE REFACTOR]: 
         + Python 3.8 support  
