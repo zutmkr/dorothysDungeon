@@ -2,8 +2,7 @@
 import logging
 from time import sleep
 from itertools import islice
-from msvcrt import getch
-
+import curses
 
 logging.basicConfig(filename='error_logs/errors.log', level=logging.DEBUG, format='%(asctime)s %(levelname)s %(name)s %(message)s')
 logger=logging.getLogger(__name__)

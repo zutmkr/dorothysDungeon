@@ -1,12 +1,13 @@
 # -*- coding: utf-8 -*-
 import random
-import winsound
+#import winsound
 import os
 import sys
 import pickle
 import logging
+import curses
 from math import ceil
-from msvcrt import getch
+#from msvcrt import getch
 from time import sleep
 
 import pokoj

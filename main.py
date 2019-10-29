@@ -2,11 +2,12 @@
 import os
 import sys
 import pickle
+import curses
 from generator_map import generator, mapsgen
 import podziemia
 import uczestnicy
 import funkcje
-from msvcrt import getch
+#from msvcrt import getch
 from pdb import set_trace as bp
 from rysuj_obrazy import rysuj, rysuj_oddo
 

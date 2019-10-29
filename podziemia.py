@@ -1,6 +1,8 @@
+
 # -*- coding: utf-8 -*-
 import random
 import os
+import curses
 
 import rysuj_obrazy
 import pokoj
@@ -8,7 +10,7 @@ import funkcje
 import pole
 
 
-from msvcrt import getch
+#from msvcrt import getch
 ile_map = 0
 rodzaj_mapy = [[0,0,0,0,0,0,0], [0,0,0,0,0,0,0,0,0], [0,0,0,0,0,0,0,0,0,0,0]]
 prawda_falsz = [True, False]

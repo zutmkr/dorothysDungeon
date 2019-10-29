@@ -1,8 +1,9 @@
 # -*- coding: utf-8 -*-
 import random
-import winsound
+#import winsound
 import os
-from msvcrt import getch
+import curses
+#from getch import getch
 
 import przedmiot
 import rysuj_obrazy
@@ -87,7 +88,7 @@ class Gracz:
             funkcje.status = ''
             if not self.lista[-1].nazwa.find('legendary'):
                 self.lista[-1].nazwa += ' +5 do STRENGHT'
-                winsound.PlaySound('sound/legenda.wav', winsound.SND_ASYNC)
+                #winsound.PlaySound('sound/legenda.wav', winsound.SND_ASYNC)
                 funkcje.status = 'You got ' + self.lista[-1].nazwa + '!!!'          
                 self.s += 5
         else:
