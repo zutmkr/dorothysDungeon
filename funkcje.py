@@ -185,7 +185,7 @@ def poruszanie_po_mapie(gr, maps):
         elif h == 'i':
             gr.pokaz_plecak()
             getch()
-        elif h == '`':
+        elif h == 'g':
             zapisz_gre(gr,maps)
             print('See you hero!')
             sleep(2)

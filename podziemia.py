@@ -213,7 +213,7 @@ class Mapa():
         print('\t\t\t\t\t\t\tX - EXIT\td - go right')
         print('\t\t\t\t\t\t\t\t\tc - show player stats and quests')
         print('\t\t\t\t\t\t\t\t\ti - show inventory')
-        print('\n\t\t\t\t\t\t\t\t\t\t` - exit game (game save)')
+        print('\n\t\t\t\t\t\t\t\t\t\tg- exit game (game save)')
         print('\tMap nr: ', ile_map)
 
     def stworz_nowa_mape(self,gr):
