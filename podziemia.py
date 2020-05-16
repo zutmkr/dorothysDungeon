@@ -164,7 +164,7 @@ class Mapa():
     def rysuj_mape(self):
         global poziom_p
         global ile_map
-        os.system('cls')  # czyszczenie ekranu
+        funkcje.clearScreen()  # czyszczenie ekranu
         rysuj_obrazy.rysuj("static/LOGO.txt")
         print('\t\t\tDUNGEON LEVEL: ', poziom_p, '\n')
 

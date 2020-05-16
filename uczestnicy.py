@@ -64,7 +64,7 @@ class Gracz:
             print(Przedmiot.nazwa)
 
     def karta_postaci(self):
-        os.system('cls')  # czyszczenie ekranu
+        funkcje.clearScreen()  # czyszczenie ekranu
         print('\n\n\t\t', self.imie, 'GREAT WARRIOR\n\n')
         with open('static/warrior.txt') as plik:
             print(plik.read())
@@ -113,7 +113,7 @@ class Gracz:
             self.lista[s].nazwa = self.lista[s].nazwa.lstrip()
             self.lista[s].nazwa = '-> ' + self.lista[s].nazwa
     
-            os.system('cls')  # czyszczenie ekranu
+            funkcje.clearScreen()  # czyszczenie ekranu
             print('Choose what interests you:')
             print('\t\t\t\t\t\tINSTRUCTIONS')
             print('\t\t\t\t\t\t\tw - arrow up')
@@ -210,7 +210,7 @@ class Gracz:
         
     def quest(self,gr):        
         while True:
-            os.system('cls')  # czyszczenie ekranu
+            funkcje.clearScreen()  # czyszczenie ekranu
             rysuj_obrazy.rysuj("static/" + self.imie + ".txt")  
             od = 1
             do = 3
@@ -263,7 +263,7 @@ class Potwor(Gracz):
         self.pmax = pz
 
     def walka_gui(self, status, gr):
-        os.system('cls')
+        funkcje.clearScreen()
         rysuj_obrazy.rysuj('static/' + self.imie + '.txt')
         print('You must fight with ', self.imie, ' ', self.pz, '/', self.pmax, 'LP')
         print('\t\t\t\t\t\tCOMMANDS')
@@ -276,7 +276,7 @@ class Potwor(Gracz):
 class Uzdrowiciel(Gracz):
     def __init__(self, gr):
         self.imie = 'uzdr'
-        os.system('cls')  # czyszczenie ekranu
+        funkcje.clearScreen()  # czyszczenie ekranu
         rysuj_obrazy.rysuj('static/uzdr.txt')
         ile_pkt = 3 * 1.5 * podziemia.poziom_p
         print('You meet the Healer!!!')
