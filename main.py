@@ -22,7 +22,7 @@ def menu_glowne():
     od = 0
     do = 5  
     
-    os.system('cls')  # czyszczenie ekranu
+    funkcje.clearScreen()  # czyszczenie ekranu
     rysuj("static/LOGO.txt")
     rysuj("lang/PL/menu_glowne_instrukcje.txt")
     rysuj_oddo("lang/PL/menu_glowne.txt",od,do)
@@ -34,14 +34,14 @@ def menu_glowne():
         if inp == 'w' and od >= 6:
             od -= 6
             do -= 6
-            os.system('cls')  # czyszczenie ekranu
+            funkcje.clearScreen()  # czyszczenie ekranu
             rysuj("static/LOGO.txt")
             rysuj("lang/PL/menu_glowne_instrukcje.txt")
             rysuj_oddo("lang/PL/menu_glowne.txt",od,do)
         elif inp == 's' and od >= 0 and do < 23:
             od += 6
             do += 6
-            os.system('cls')  # czyszczenie ekranu
+            funkcje.clearScreen()  # czyszczenie ekranu
             rysuj("static/LOGO.txt")
             rysuj("lang/PL/menu_glowne_instrukcje.txt")
             rysuj_oddo("lang/PL/menu_glowne.txt",od,do)
@@ -113,7 +113,7 @@ def extra():
     od = 24
     do = 28  
     
-    os.system('cls')  # czyszczenie ekranu
+    funkcje.clearScreen()  # czyszczenie ekranu
     rysuj("static/LOGO.txt")
     rysuj("lang/PL/menu_glowne_instrukcje.txt")
     rysuj_oddo("lang/PL/menu_glowne.txt",od,do)
@@ -125,14 +125,14 @@ def extra():
         if inp == 'w' and od >= 28:
             od -= 5
             do -= 5
-            os.system('cls')  # czyszczenie ekranu
+            funkcje.clearScreen()  # czyszczenie ekranu
             rysuj("static/LOGO.txt")
             rysuj("lang/PL/menu_glowne_instrukcje.txt")
             rysuj_oddo("lang/PL/menu_glowne.txt",od,do)
         elif inp == 's' and od >= 24 and do < 37:
             od += 5
             do += 5
-            os.system('cls')  # czyszczenie ekranu
+            funkcje.clearScreen()  # czyszczenie ekranu
             rysuj("static/LOGO.txt")
             rysuj("lang/PL/menu_glowne_instrukcje.txt")
             rysuj_oddo("lang/PL/menu_glowne.txt",od,do)
@@ -147,7 +147,7 @@ def opcje():
     od = 39
     do = 43  
     
-    os.system('cls')  # czyszczenie ekranu
+    funkcje.clearScreen()  # czyszczenie ekranu
     rysuj("static/LOGO.txt")
     rysuj("lang/PL/menu_glowne_instrukcje.txt")
     rysuj_oddo("lang/PL/menu_glowne.txt",od,do)
@@ -159,14 +159,14 @@ def opcje():
         if inp == 'w' and od >= 43:
             od -= 5
             do -= 5
-            os.system('cls')  # czyszczenie ekranu
+            funkcje.clearScreen()  # czyszczenie ekranu
             rysuj("static/LOGO.txt")
             rysuj("lang/PL/menu_glowne_instrukcje.txt")
             rysuj_oddo("lang/PL/menu_glowne.txt",od,do)
         elif inp == 's' and od >= 39 and do < 52:
             od += 5
             do += 5
-            os.system('cls')  # czyszczenie ekranu
+            funkcje.clearScreen()  # czyszczenie ekranu
             rysuj("static/LOGO.txt")
             rysuj("lang/PL/menu_glowne_instrukcje.txt")
             rysuj_oddo("lang/PL/menu_glowne.txt",od,do)
@@ -174,7 +174,7 @@ def opcje():
             if od >=39 and do <=43:
                 getch()
             elif od >=43 and do <=48:
-                os.system('cls')  # czyszczenie ekranu
+                funkcje.clearScreen()  # czyszczenie ekranu
                 rysuj("static/O_GRZE.txt")
                 return False
             elif od >=48 and do <=54:

@@ -7,7 +7,6 @@ import pickle
 import logging
 import curses
 from math import ceil
-#from msvcrt import getch
 from time import sleep
 
 import pokoj
@@ -24,7 +23,9 @@ prawda_falsz = [True, False]
 status = ''
 PIK = "save/objects.bj"
 
-
+def clearScreen():
+	os.system('clear')
+	
 def sciana():
     global status
     status = 'It is a wall.'
@@ -46,7 +47,7 @@ def handel(gr,ha):
 
     
     while wyb != '0':
-        os.system('cls')  # czyszczenie ekranu
+        clearScreen()  # czyszczenie ekranu
         rysuj_obrazy.rysuj('static/handl.txt')
         print('\t\tYou meet a merchant!!!\n')
         print('>How can I help you?\n\t\t\t The dealer has ', ha.zloto, ' gold\n')
