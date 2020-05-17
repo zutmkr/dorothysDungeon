@@ -1,5 +1,27 @@
-
 ![Logo](https://github.com/zutmkr/Studia/blob/master/praca_inz/static/logo.PNG)
+
+<details><summary>BETA STAGE CHANGELOG - Linux</summary></details>
+
+# (Beta v0.3.0.170520.0):
+### [CODE REFACTOR]:
+        + renamed some functions to their linux counterpatrs
+        + game is playable (somewhat...)
+### [MAP GENERATOR v0.06]:
+        + Do not work
+### [MISC]:
+        + updated and created .gitignores
+
+<details><summary>BETA STAGE CHANGELOG</summary>
+<p>
+# (Beta v0.2.1.191004.0):
+### [CODE REFACTOR]:
+### [MAP GENERATOR v0.06]:
+        + removed unnecessary code   
+        + redone save_map() function 
+        + code translation in progress...  
+### [MISC]:
+        + updated .gitignore  
+
 
 # (Beta v0.2.1.191004.0):
 ### [CODE REFACTOR]:
@@ -37,9 +59,6 @@
 # (Beta v0.2.1.190918.0):
 ### [CODE REFACTOR]:
         + initial commit
-
-<details><summary>BETA STAGE CHANGELOG</summary>
-<p>
 
 # (Beta v0.2.1.180308):
 ### [CODE + HOTFIX]:

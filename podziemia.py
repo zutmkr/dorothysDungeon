@@ -2,7 +2,6 @@
 # -*- coding: utf-8 -*-
 import random
 import os
-import curses
 
 import rysuj_obrazy
 import pokoj
@@ -164,7 +163,7 @@ class Mapa():
     def rysuj_mape(self):
         global poziom_p
         global ile_map
-        funkcje.clearScreen()  # czyszczenie ekranu
+        funkcje.clear_screen()  # czyszczenie ekranu
         rysuj_obrazy.rysuj("static/LOGO.txt")
         print('\t\t\tDUNGEON LEVEL: ', poziom_p, '\n')
 

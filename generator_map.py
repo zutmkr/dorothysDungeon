@@ -3,12 +3,9 @@ import os, os.path
 import random
 import uczestnicy
 import fnmatch
-from tkinter import *
-from tkinter import messagebox
-from tkinter import ttk
+
 from datetime import date
 from podziemia import Mapa
-from tkinter import filedialog
 
 mapsgen = 0
 WINDOW_TITLE = f"Dorothy's Dungeon Map Generator v0.06"

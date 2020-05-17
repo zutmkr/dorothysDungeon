@@ -1,11 +1,9 @@
 # -*- coding: utf-8 -*-
 import random
-#import winsound
 import os
 import sys
 import pickle
 import logging
-import curses
 from math import ceil
 from time import sleep
 
@@ -23,7 +21,7 @@ prawda_falsz = [True, False]
 status = ''
 PIK = "save/objects.bj"
 
-def clearScreen():
+def clear_screen():
 	os.system('clear')
 	
 def sciana():
@@ -33,7 +31,7 @@ def sciana():
 def zapisz_gre(gr,maps):
     data = [gr,maps, podziemia.poziom_p, gr.lista, gr.zadania]
     
-    with open(PIK, "wb") as f:
+    with open(PIK, "w+b") as f:
         pickle.dump(len(data), f)
         for value in data:
             pickle.dump(value, f)
@@ -47,7 +45,7 @@ def handel(gr,ha):
 
     
     while wyb != '0':
-        clearScreen()  # czyszczenie ekranu
+        clear_screen()  # czyszczenie ekranu
         rysuj_obrazy.rysuj('static/handl.txt')
         print('\t\tYou meet a merchant!!!\n')
         print('>How can I help you?\n\t\t\t The dealer has ', ha.zloto, ' gold\n')
@@ -68,20 +66,26 @@ def handel(gr,ha):
             Thanks for destroying the last \n\
             representative of his species. Here's the promised \n\
             prize.")
-            getch()
+            ###
+            # I need to add some kind of sleep or button press for 
+            # akcnowledge
             gr.dodaj_do_plecak()
             gr.punkty += 10
             gr.zadania[3] = 0
             gr.zadania[4] = 0
             gr.zadania[5] = 0
             print("You received an item! - ", gr.lista[-1].nazwa)
-            getch()
+            ###
+            # I need to add some kind of sleep or button press for 
+            # akcnowledge
         elif gr.zadania[3] == 1 and gr.zadania[4] == 0 and gr.zadania[5] == 1:
             print ("\tYou are GREAT! \n\
             These gargoyles will not come back soon. \n\
             In the end, I will have peace. Here's the promised \n\
             prize.")
-            getch()
+            ###
+            # I need to add some kind of sleep or button press for 
+            # akcnowledge
             gr.dodaj_do_plecak()
             gr.punkty += 20
             gr.zadania[3] = 0
@@ -89,7 +93,9 @@ def handel(gr,ha):
             gr.zadania[5] = 0
             uczestnicy.gargulce = 0
             print("You received an item! - ", gr.lista[-1].nazwa)
-            getch()
+            ###
+            # I need to add some kind of sleep or button press for 
+            # akcnowledge
     try:
         if random.choice(prawda_falsz):
             if gr.zadania[3] == 0:
@@ -160,8 +166,6 @@ def widocznosc(gr, maps):
 def poruszanie_po_mapie(gr, maps):
     global status
     gr.pobierz_pozycje(maps)
-    # winsound.PlaySound('sound/fire.wav', winsound.SND_ASYNC | winsound.SND_LOOP | winsound.SND_FILENAME)
-    # winsound.PlaySound(None, winsound.SND_PURGE) # brak dzwieku
 
     while True:
         print('Status: ', status)
@@ -181,10 +185,14 @@ def poruszanie_po_mapie(gr, maps):
             maps.stworz_nowa_mape(gr)
         elif h == 'c':
             gr.karta_postaci()
-            getch()
+            ###
+            # I need to add some kind of sleep or button press for 
+            # akcnowledge
         elif h == 'i':
             gr.pokaz_plecak()
-            getch()
+            ###
+            # I need to add some kind of sleep or button press for 
+            # akcnowledge
         elif h == 'g':
             zapisz_gre(gr,maps)
             print('See you hero!')
@@ -282,7 +290,9 @@ def rozpocznij_walke(gr):
         if gr.pz == 0:
             potwor.walka_gui(status, gr)
             print('YOU WERE SLAIN.')
-            getch()
+            ###
+            # I need to add some kind of sleep or button press for 
+            # akcnowledge
             
             dlugosc_poziom = ((9 + len(gr.imie)) - 19) * (-1)       #magic numbers...
             dlugosc_punkty = 33 - 9 - len(gr.imie) - dlugosc_poziom
@@ -313,20 +323,25 @@ def rozpocznij_walke(gr):
         while True:
             if h == 'f':
                 status = 'You attack ' + str(potwor.imie) + ' for ' + str(gr.s) + ' damage!'
-                winsound.PlaySound('sound/gracz_atak.wav', winsound.SND_ASYNC)
                 potwor.walka_gui(status, gr)
-                getch()
+                ###
+            # I need to add some kind of sleep or button press for 
+            # akcnowledge
                 potwor.pz -= gr.s
                 break
             elif h == 'j':
                 b = random.randrange(1, 13)
                 if b in range(1, 5):
                     print('ESCAPE SUCCESSFUL!')
-                    getch()
+                    ###
+            # I need to add some kind of sleep or button press for 
+            # akcnowledge
                     return
                 else:
                     print('YOU FAILED TO ESCAPE')
-                    getch()
+                    ###
+            # I need to add some kind of sleep or button press for 
+            # akcnowledge
                     break
             else:
                 status = 'I think you got something wrong?!'
@@ -334,7 +349,6 @@ def rozpocznij_walke(gr):
                 h = input('\n\nCommand?>')
 
         if potwor.pz <= 0:
-            winsound.PlaySound('sound/smok_smierc.wav', winsound.SND_ASYNC)
             print('VICTORY!!!')
             if potwor.imie == "Jezdziec":
                 ile_wygral = 135.0 * 1.45 * podziemia.poziom_p
@@ -355,11 +369,12 @@ def rozpocznij_walke(gr):
             else:
                 print("You receive ", ile_wygral, " gold.")
             gr.punkty += 5
-            getch()
+            ###
+            # I need to add some kind of sleep or button press for 
+            # akcnowledge
             return
         else:
             status = str(potwor.imie) + ' attack you for ' + str(potwor.s) + ' damage!'
-            winsound.PlaySound('sound/smok_atak.wav', winsound.SND_ASYNC)
             gr.pz -= potwor.s
             if gr.pz <= 0:
                 gr.pz = 0        
