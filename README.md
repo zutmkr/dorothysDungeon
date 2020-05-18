@@ -1,6 +1,5 @@
 ![Logo](https://github.com/zutmkr/Studia/blob/master/praca_inz/static/logo.PNG)
 
-<details><summary>BETA STAGE CHANGELOG - Linux</summary></details>
 
 # (Beta v0.3.0.170520.0):
 ### [CODE REFACTOR]:
@@ -17,7 +16,7 @@
 ### [CODE REFACTOR]:
 ### [MAP GENERATOR v0.06]:
         + removed unnecessary code   
-        + redone save_map() function 
+        + redone save_map() function   
         + code translation in progress...  
 ### [MISC]:
         + updated .gitignore  
@@ -26,8 +25,8 @@
 # (Beta v0.2.1.191004.0):
 ### [CODE REFACTOR]:
 ### [MAP GENERATOR v0.06]:
-        + removed unnecessary code   
-        + redone save_map() function 
+        + removed unnecessary code  
+        + redone save_map() function  
         + code translation in progress...  
 ### [MISC]:
         + updated .gitignore  
@@ -47,7 +46,7 @@
         + variable naming refactored and translated  
         + added more map sizes  
 ### [MISC]:
-        + updated .gitignore          
+        + updated .gitignore  
 
 # (Beta v0.2.1.190918.1):
 ### [CODE REFACTOR]:
@@ -93,7 +92,7 @@
         + map is generated in three variants of size  
 ### [KNOWN BUGS]:
         + selecting the 'new game' on the death screen takes you to the Main menu  
-         ++ fixed (python turned out to use '__main__ import' to use initializer script methods)
+         ++ fixed (python turned out to use '__main__ import' to use initializer script methods)  
 </p>
 </details>
 
