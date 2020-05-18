@@ -21,6 +21,9 @@ prawda_falsz = [True, False]
 status = ''
 PIK = "save/objects.bj"
 
+def get_char():
+    input(f'Press any key to continue...')
+
 def clear_screen():
 	os.system('clear')
 	
@@ -185,14 +188,10 @@ def poruszanie_po_mapie(gr, maps):
             maps.stworz_nowa_mape(gr)
         elif h == 'c':
             gr.karta_postaci()
-            ###
-            # I need to add some kind of sleep or button press for 
-            # akcnowledge
+            get_char()
         elif h == 'i':
             gr.pokaz_plecak()
-            ###
-            # I need to add some kind of sleep or button press for 
-            # akcnowledge
+            get_char()
         elif h == 'g':
             zapisz_gre(gr,maps)
             print('See you hero!')
@@ -290,9 +289,7 @@ def rozpocznij_walke(gr):
         if gr.pz == 0:
             potwor.walka_gui(status, gr)
             print('YOU WERE SLAIN.')
-            ###
-            # I need to add some kind of sleep or button press for 
-            # akcnowledge
+            get_char()
             
             dlugosc_poziom = ((9 + len(gr.imie)) - 19) * (-1)       #magic numbers...
             dlugosc_punkty = 33 - 9 - len(gr.imie) - dlugosc_poziom
@@ -324,24 +321,18 @@ def rozpocznij_walke(gr):
             if h == 'f':
                 status = 'You attack ' + str(potwor.imie) + ' for ' + str(gr.s) + ' damage!'
                 potwor.walka_gui(status, gr)
-                ###
-            # I need to add some kind of sleep or button press for 
-            # akcnowledge
+                get_char()
                 potwor.pz -= gr.s
                 break
             elif h == 'j':
                 b = random.randrange(1, 13)
                 if b in range(1, 5):
                     print('ESCAPE SUCCESSFUL!')
-                    ###
-            # I need to add some kind of sleep or button press for 
-            # akcnowledge
+                    get_char()
                     return
                 else:
                     print('YOU FAILED TO ESCAPE')
-                    ###
-            # I need to add some kind of sleep or button press for 
-            # akcnowledge
+                    get_char()
                     break
             else:
                 status = 'I think you got something wrong?!'
@@ -369,9 +360,7 @@ def rozpocznij_walke(gr):
             else:
                 print("You receive ", ile_wygral, " gold.")
             gr.punkty += 5
-            ###
-            # I need to add some kind of sleep or button press for 
-            # akcnowledge
+            get_char()
             return
         else:
             status = str(potwor.imie) + ' attack you for ' + str(potwor.s) + ' damage!'
