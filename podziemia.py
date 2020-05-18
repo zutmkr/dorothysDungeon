@@ -2,18 +2,17 @@
 # -*- coding: utf-8 -*-
 import random
 import os
-
 import rysuj_obrazy
 import pokoj
 import funkcje
 import pole
 
 
-#from msvcrt import getch
 ile_map = 0
+poziom_p = 1
 rodzaj_mapy = [[0,0,0,0,0,0,0], [0,0,0,0,0,0,0,0,0], [0,0,0,0,0,0,0,0,0,0,0]]
 prawda_falsz = [True, False]
-poziom_p = 1
+
 
 
 class Mapa():
@@ -212,7 +211,7 @@ class Mapa():
         print('\t\t\t\t\t\t\tX - EXIT\td - go right')
         print('\t\t\t\t\t\t\t\t\tc - show player stats and quests')
         print('\t\t\t\t\t\t\t\t\ti - show inventory')
-        print('\n\t\t\t\t\t\t\t\t\t\tg- exit game (game save)')
+        print('\n\t\t\t\t\t\t\t\t\t\tg - exit game (game save)')
         print('\tMap nr: ', ile_map)
 
     def stworz_nowa_mape(self,gr):
