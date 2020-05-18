@@ -3,13 +3,18 @@ import os, os.path
 import random
 import uczestnicy
 import fnmatch
+import json
 
 from datetime import date
 from podziemia import Mapa
 
 mapsgen = 0
-WINDOW_TITLE = f"Dorothy's Dungeon Map Generator v0.06"
+with open('config.json') as json_file:
+    data = json.load(json_file)
+    version = data.get('version').get('map_generator')
+WINDOW_TITLE = f"Dorothy's Dungeon Map Generator {version}"
 WINDOW_RESOLUTION = "630x500"
+
 
 def licz_pliki(adres):
     count = 0

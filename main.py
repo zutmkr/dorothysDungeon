@@ -5,6 +5,8 @@ import pickle
 import podziemia
 import uczestnicy
 import funkcje
+import json
+import platform
 from generator_map import generator, mapsgen
 from pdb import set_trace as bp
 from rysuj_obrazy import rysuj, rysuj_oddo
@@ -16,12 +18,16 @@ os.system('mode con: cols=115 lines=55')
 
 
 def menu_glowne():
-
+    with open('config.json') as json_file:
+        data = json.load(json_file)
+        version = data.get('version').get('game')
     od = 0
     do = 5  
     
     funkcje.clear_screen()  # czyszczenie ekranu
     rysuj("static/LOGO.txt")
+    print(f"\t Version: {version}")
+    print(f"\t Python : {platform.python_version()}")
     rysuj("lang/PL/menu_glowne_instrukcje.txt")
     rysuj_oddo("lang/PL/menu_glowne.txt",od,do)
     
