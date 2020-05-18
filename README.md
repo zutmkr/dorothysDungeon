@@ -12,15 +12,15 @@
 
 <details><summary>BETA STAGE CHANGELOG</summary>
 <p>
+
 # (Beta v0.2.1.191004.0):
 ### [CODE REFACTOR]:
 ### [MAP GENERATOR v0.06]:
-        + removed unnecessary code   
-        + redone save_map() function   
+        + removed unnecessary code  
+        + redone save_map() function  
         + code translation in progress...  
 ### [MISC]:
         + updated .gitignore  
-
 
 # (Beta v0.2.1.191004.0):
 ### [CODE REFACTOR]:
