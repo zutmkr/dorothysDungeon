@@ -2,11 +2,10 @@
 import os
 import sys
 import pickle
-from generator_map import generator, mapsgen
 import podziemia
 import uczestnicy
 import funkcje
-#from msvcrt import getch
+from generator_map import generator, mapsgen
 from pdb import set_trace as bp
 from rysuj_obrazy import rysuj, rysuj_oddo
 
@@ -28,7 +27,6 @@ def menu_glowne():
     
     
     while True:
-        #inp = getch().decode("utf-8")
         inp = input()
         if inp == 'w' and od >= 6:
             od -= 6
@@ -119,7 +117,6 @@ def extra():
     
     
     while True:
-        #inp = getch().decode("utf-8")
         inp = input()
         if inp == 'w' and od >= 28:
             od -= 5
@@ -153,7 +150,6 @@ def opcje():
     
     
     while True:
-        #inp = getch().decode("utf-8")
         inp = input()
         if inp == 'w' and od >= 43:
             od -= 5
@@ -171,7 +167,7 @@ def opcje():
             rysuj_oddo("lang/PL/menu_glowne.txt",od,do)
         elif inp == 'k':
             if od >=39 and do <=43:
-                getch()
+                funkcje.get_char()
             elif od >=43 and do <=48:
                 funkcje.clear_screen()  # czyszczenie ekranu
                 rysuj("static/O_GRZE.txt")

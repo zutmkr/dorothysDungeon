@@ -1,10 +1,6 @@
 # -*- coding: utf-8 -*-
 import random
-#import winsound
 import os
-
-#from getch import getch
-
 import przedmiot
 import rysuj_obrazy
 import podziemia
@@ -71,6 +67,7 @@ class Gracz:
         self.pokaz_staty()
         self.pokaz_zadania()
         
+        
     def pobierz_pozycje(self, maps):
         for i in range(len(maps.mapa)):
             try:
@@ -101,7 +98,7 @@ class Gracz:
         inp = ''
         if not self.lista:
             print('(',self.imie,'): I do not have any goods with me...')
-            getch()
+            funkcje.get_char()
             
         while inp != '8':
             if not self.lista:
@@ -131,7 +128,7 @@ class Gracz:
                 dlugosc_str = 34 - len(Przedmiot.nazwa)
                 print('\t', Przedmiot.nazwa, ' ' * dlugosc_str, Przedmiot.wartosc, ' gold')
     
-            inp = getch().decode("utf-8")
+            inp = input()
             if inp == 'w':
                 s -= 1
                 try:
@@ -178,7 +175,7 @@ class Gracz:
                         if not Przedmiot.nazwa.find('-> '):
                             if kto.zloto < Przedmiot.wartosc:
                                 print("I can not afford it, I have too little GOLD!")
-                                getch()
+                                funkcje.get_char()
                                 break
                             Przedmiot.nazwa = Przedmiot.nazwa.lstrip('-> ')
                             self.zloto += Przedmiot.wartosc
@@ -193,7 +190,7 @@ class Gracz:
                         if not Przedmiot.nazwa.find('-> '):
                             if kto.zloto < Przedmiot.wartosc:
                                 print("The merchant does not have so much GOLD to buy it!")
-                                getch()
+                                funkcje.get_char()
                                 break
                             Przedmiot.nazwa = Przedmiot.nazwa.lstrip('-> ')
                             self.zloto += Przedmiot.wartosc
@@ -217,7 +214,6 @@ class Gracz:
             rysuj_obrazy.rysuj_oddo("quests/" + self.imie + ".txt",od,do)
             print('\tt - YES\tn - NO')
             inp = input()
-            #inp = getch().decode("utf-8")
             if inp == 't':    
                 if type(self) is Uzdrowiciel:
                     gr.zadania[0] = 1
@@ -225,34 +221,34 @@ class Gracz:
                     if r:   #PIERWSZE ZADANIE
                         rysuj_obrazy.rysuj_oddo("quests/" + self.imie + ".txt",5,7)
                         gr.zadania[1] = 1
-                        getch()
+                        funkcje.get_char()
                         print('(' + gr.imie + '): It will be done!')
-                        getch()
+                        funkcje.get_char()
                     else:   #DRUGIE ZADANIE
                         rysuj_obrazy.rysuj_oddo("quests/" + self.imie + ".txt",17,19)
                         gr.zadania[1] = 0
-                        getch()
+                        funkcje.get_char()
                         print('(' + gr.imie + '): It will be done!')
-                        getch()           
+                        funkcje.get_char()           
                 else:   #HANDLARZ
                     gr.zadania[3] = 1
                     r = random.choice([True, False])
                     if r:   #PIERWSZE ZADANIE
                         rysuj_obrazy.rysuj_oddo("quests/" + self.imie + ".txt",5,8)
                         gr.zadania[4] = 1
-                        getch()
+                        funkcje.get_char()
                         print('(' + gr.imie + '): It will be done!')
-                        getch()
+                        funkcje.get_char()
                     else:   #DRUGIE ZADANIE
                         rysuj_obrazy.rysuj_oddo("quests/" + self.imie + ".txt",22,24)
                         gr.zadania[4] = 0
-                        getch()
+                        funkcje.get_char()
                         print('(' + gr.imie + '): It will be done!')
-                        getch()
+                        funkcje.get_char()
                 return False
             elif inp == 'n':
                 print('Bye then...')
-                getch()
+                funkcje.get_char()
                 return False
             
 class Potwor(Gracz):
@@ -284,7 +280,7 @@ class Uzdrowiciel(Gracz):
         #funkcje.quest()
         
         gr.pz += int(ile_pkt)
-        getch()
+        funkcje.get_char()
     
 class Handlarz(Gracz):
     def __init__(self):
