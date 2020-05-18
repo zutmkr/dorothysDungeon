@@ -3,13 +3,14 @@ import os, os.path
 import random
 import uczestnicy
 import fnmatch
-
 from datetime import date
 from podziemia import Mapa
+from config import Version
 
 mapsgen = 0
-WINDOW_TITLE = f"Dorothy's Dungeon Map Generator v0.06"
+WINDOW_TITLE = f"Dorothy's Dungeon Map Generator {Version.MAP_GENERATOR.value}"
 WINDOW_RESOLUTION = "630x500"
+
 
 def licz_pliki(adres):
     count = 0
