@@ -3,16 +3,12 @@ import os, os.path
 import random
 import uczestnicy
 import fnmatch
-import json
-
 from datetime import date
 from podziemia import Mapa
+from config import Version
 
 mapsgen = 0
-with open('config.json') as json_file:
-    data = json.load(json_file)
-    version = data.get('version').get('map_generator')
-WINDOW_TITLE = f"Dorothy's Dungeon Map Generator {version}"
+WINDOW_TITLE = f"Dorothy's Dungeon Map Generator {Version.MAP_GENERATOR.value}"
 WINDOW_RESOLUTION = "630x500"
 
 

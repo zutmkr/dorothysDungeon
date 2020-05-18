@@ -5,11 +5,11 @@ import pickle
 import podziemia
 import uczestnicy
 import funkcje
-import json
 import platform
 from generator_map import generator, mapsgen
 from pdb import set_trace as bp
 from rysuj_obrazy import rysuj, rysuj_oddo
+from config import Version
 
 
 PIK = "save/objects.bj"
@@ -18,36 +18,24 @@ os.system('mode con: cols=115 lines=55')
 
 
 def menu_glowne():
-    with open('config.json') as json_file:
-        data = json.load(json_file)
-        version = data.get('version').get('game')
     od = 0
     do = 5  
     
-    funkcje.clear_screen()  # czyszczenie ekranu
-    rysuj("static/LOGO.txt")
-    print(f"\t Version: {version}")
-    print(f"\t Python : {platform.python_version()}")
-    rysuj("lang/PL/menu_glowne_instrukcje.txt")
-    rysuj_oddo("lang/PL/menu_glowne.txt",od,do)
-    
-    
     while True:
+        funkcje.clear_screen()  # czyszczenie ekranu
+        rysuj("static/LOGO.txt")
+        print(f"\t Version: {Version.GAME.value}")
+        print(f"\t Python : {platform.python_version()}")
+        rysuj("lang/PL/menu_glowne_instrukcje.txt")
+        rysuj_oddo("lang/PL/menu_glowne.txt",od,do)
+        
         inp = input()
         if inp == 'w' and od >= 6:
             od -= 6
             do -= 6
-            funkcje.clear_screen()  # czyszczenie ekranu
-            rysuj("static/LOGO.txt")
-            rysuj("lang/PL/menu_glowne_instrukcje.txt")
-            rysuj_oddo("lang/PL/menu_glowne.txt",od,do)
         elif inp == 's' and od >= 0 and do < 23:
             od += 6
             do += 6
-            funkcje.clear_screen()  # czyszczenie ekranu
-            rysuj("static/LOGO.txt")
-            rysuj("lang/PL/menu_glowne_instrukcje.txt")
-            rysuj_oddo("lang/PL/menu_glowne.txt",od,do)
         elif inp == 'k':
             if od >=0 and do <=6:
                 nowa_gra()
@@ -62,7 +50,7 @@ def menu_glowne():
 def nowa_gra(poziom_pgen = None, wielkosc_mapygen = None, punkty_zycia = None, sila = None):
     gr = uczestnicy.Gracz()
     while gr.imie == '':
-        gr.imie = input("ENTER HERO NAME\n\t")
+        gr.imie = input("\n\tENTER HERO NAME\n\t")
         if len(gr.imie) > 9:
             print('NAME TOO LONG. MAX 9 CHARS')
             gr.imie = ''
@@ -116,28 +104,20 @@ def extra():
     od = 24
     do = 28  
     
-    funkcje.clear_screen()  # czyszczenie ekranu
-    rysuj("static/LOGO.txt")
-    rysuj("lang/PL/menu_glowne_instrukcje.txt")
-    rysuj_oddo("lang/PL/menu_glowne.txt",od,do)
-    
-    
     while True:
+        funkcje.clear_screen()  # czyszczenie ekranu
+        rysuj("static/LOGO.txt")
+        print(f"\t Version: {Version.GAME.value}")
+        print(f"\t Python : {platform.python_version()}")
+        rysuj("lang/PL/menu_glowne_instrukcje.txt")
+        rysuj_oddo("lang/PL/menu_glowne.txt",od,do)
         inp = input()
         if inp == 'w' and od >= 28:
             od -= 5
             do -= 5
-            funkcje.clear_screen()  # czyszczenie ekranu
-            rysuj("static/LOGO.txt")
-            rysuj("lang/PL/menu_glowne_instrukcje.txt")
-            rysuj_oddo("lang/PL/menu_glowne.txt",od,do)
         elif inp == 's' and od >= 24 and do < 37:
             od += 5
             do += 5
-            funkcje.clear_screen()  # czyszczenie ekranu
-            rysuj("static/LOGO.txt")
-            rysuj("lang/PL/menu_glowne_instrukcje.txt")
-            rysuj_oddo("lang/PL/menu_glowne.txt",od,do)
         elif inp == 'k':
             if od >=24 and do <=28:
                 generator()
@@ -145,32 +125,25 @@ def extra():
                 opcje()
             elif od >=34 and do <=39:
                 menu_glowne()
+                
 def opcje():
     od = 39
     do = 43  
-    
-    funkcje.clear_screen()  # czyszczenie ekranu
-    rysuj("static/LOGO.txt")
-    rysuj("lang/PL/menu_glowne_instrukcje.txt")
-    rysuj_oddo("lang/PL/menu_glowne.txt",od,do)
-    
-    
+      
     while True:
+        funkcje.clear_screen()  # czyszczenie ekranu
+        rysuj("static/LOGO.txt")
+        print(f"\t Version: {Version.GAME.value}")
+        print(f"\t Python : {platform.python_version()}")
+        rysuj("lang/PL/menu_glowne_instrukcje.txt")
+        rysuj_oddo("lang/PL/menu_glowne.txt",od,do)
         inp = input()
         if inp == 'w' and od >= 43:
             od -= 5
             do -= 5
-            funkcje.clear_screen()  # czyszczenie ekranu
-            rysuj("static/LOGO.txt")
-            rysuj("lang/PL/menu_glowne_instrukcje.txt")
-            rysuj_oddo("lang/PL/menu_glowne.txt",od,do)
         elif inp == 's' and od >= 39 and do < 52:
             od += 5
             do += 5
-            funkcje.clear_screen()  # czyszczenie ekranu
-            rysuj("static/LOGO.txt")
-            rysuj("lang/PL/menu_glowne_instrukcje.txt")
-            rysuj_oddo("lang/PL/menu_glowne.txt",od,do)
         elif inp == 'k':
             if od >=39 and do <=43:
                 funkcje.get_char()
