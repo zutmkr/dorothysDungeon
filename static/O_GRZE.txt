@@ -11,15 +11,15 @@
         three features:
             NAME - Set when starting a new game.
             STRENGTH - Determines the amount of damage inflicted on monsters.
-            LIFE POINTS - They determine how many damage they can take
-                           our character. Decrease this trait to zero
-                           ends the game with the GAME OVER screen.
+            HIT POINTS - They determine how many damage they can take
+                         our character. Decrease this trait to zero
+                         ends the game with the GAME OVER screen.
         Along with the level of the dungeon, the strength and life of monsters increases, but also the value of rewards for quests.
     [HOW TO SURVIVE?]
         On the player's way there appear (apart from opponents) independent characters.
             Merchant - Purchase and sale of items. Sometimes he will
-                          give you a quest.
-            Healer - Increases our pool of LIFE POINTS.
+                       give you a quest.
+            Healer - Increases our pool of HIT POINTS.
         In the game there are also items that we can sell at the dealer, and in favor
         earned gold to buy other items that increase our STRENGTH.
     [HOW TO WIN?]
@@ -27,8 +27,6 @@
             1. To reach the highest level of the dungeon.
             2. Gathering as many points as possible (points are awarded for: winning fights,
             completing tasks and collected legendary items, and decreased for items
-            low (ordinary, broken, rusty, accursed) quality.
-    [ABOUT THE AUTHOR]
-        The game together with the editor was created as part of the thesis (engineering)
-        Faculty of Computer Science of the West Pomeranian University of Technology in Szczecin.
-        Author: Mateusz Krusiński                                        Szczecin, 09.06.2017
+            low quality (ordinary, broken, rusty, accursed).
+    
+    Author: zutmkr

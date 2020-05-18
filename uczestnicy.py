@@ -269,7 +269,7 @@ class Potwor(Gracz):
         print('\t\t\t\t\t\tCOMMANDS')
         print('\t\t\t\t\t\t\tf - Weapon attack')
         print('\t\t\t\t\t\t\tj - Run(25% chance)\n\n')
-        print('\t\t\t\t\t\t\tYour LP: ', gr.pz)
+        print('\t\t\t\t\t\t\tYour HP: ', gr.pz)
         print('Status: ', status)
 
 
