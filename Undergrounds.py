@@ -2,9 +2,9 @@
 # -*- coding: utf-8 -*-
 import random
 import os
-import rysuj_obrazy
-import pokoj
-import funkcje
+import Draw_Images
+import Room
+import Functions
 import pole
 
 
@@ -30,11 +30,11 @@ class Mapa():
         self.mapa = []  # ATR: MAPA
         for i in range(len(wielkosc_mapy)): self.mapa.append(wielkosc_mapy[:])
         
-        self.lista_pokoi = [pokoj.Pokoj() for i in range(len(wielkosc_mapy) ** 2)]  # ATR: LISTA_POKOI
+        self.list_of_item_pokoi = [Room.Pokoj() for i in range(len(wielkosc_mapy) ** 2)]  # ATR: list_of_item_POKOI
         k = 0
         for i in range(len(wielkosc_mapy)):
             for j in range(len(wielkosc_mapy)):
-                self.mapa[i][j] = self.lista_pokoi[k]
+                self.mapa[i][j] = self.list_of_item_pokoi[k]
                 if random.choice(prawda_falsz):
                     self.mapa[i][j].otwarty = True
                     if random.choice(prawda_falsz):
@@ -48,8 +48,8 @@ class Mapa():
         global ile_map
         global wybrana
         wielkosc_mapy = wybrana #random.choice(rodzaj_mapy)
-        lista_otwarta = []
-        lista_zamknieta = []
+        list_of_item_otwarta = []
+        list_of_item_zamknieta = []
         nowa_mapa = []
         znaleziony = 0
         mapa_ok = 0
@@ -65,21 +65,21 @@ class Mapa():
         nowa_mapa[0][0].otwarty = True
         nowa_mapa[0][0].h = 10 * (abs(nowa_mapa[0][0].x - nowa_mapa[len(nowa_mapa)- 1][len(nowa_mapa)- 1].x) + abs(nowa_mapa[0][0].y - nowa_mapa[len(nowa_mapa)- 1][len(nowa_mapa)- 1].y))
         nowa_mapa[0][0].suma = nowa_mapa[0][0].g + nowa_mapa[0][0].h
-        lista_otwarta.append(nowa_mapa[0][0])
+        list_of_item_otwarta.append(nowa_mapa[0][0])
         while True:
-            #print(lista_otwarta)
-            for Pole in lista_otwarta:
+            #print(list_of_item_otwarta)
+            for Pole in list_of_item_otwarta:
                 if Pole.x == (len(wielkosc_mapy) - 1) and Pole.y == (len(wielkosc_mapy) - 1):
                     mapa_ok = 1
-            if not lista_otwarta:
+            if not list_of_item_otwarta:
                 if wielkosc_mapygen is not None:
                     self.__init__(wielkosc_mapygen)
                 else:
                     self.__init__()
                 ile_map += 1
                 wielkosc_mapy = wybrana
-                lista_otwarta = []
-                lista_zamknieta = []
+                list_of_item_otwarta = []
+                list_of_item_zamknieta = []
                 nowa_mapa = []
                 znaleziony = 0
                 mapa_ok = 0
@@ -93,11 +93,11 @@ class Mapa():
                 nowa_mapa[0][0].otwarty = True
                 nowa_mapa[0][0].h = 10 * (abs(nowa_mapa[0][0].x - nowa_mapa[len(wielkosc_mapy)- 1][len(wielkosc_mapy)- 1].x) + abs(nowa_mapa[0][0].y - nowa_mapa[len(wielkosc_mapy)- 1][len(wielkosc_mapy)- 1].y))
                 nowa_mapa[0][0].suma = nowa_mapa[0][0].g + nowa_mapa[0][0].h
-                lista_otwarta.append(nowa_mapa[0][0])
+                list_of_item_otwarta.append(nowa_mapa[0][0])
             
-            aktualny = min(lista_otwarta, key=lambda Pole: Pole.suma)
+            aktualny = min(list_of_item_otwarta, key=lambda Pole: Pole.suma)
             try:
-                for Pole in lista_zamknieta:
+                for Pole in list_of_item_zamknieta:
                     if Pole == nowa_mapa[aktualny.x+1][aktualny.y]:
                         znaleziony = 1
                         break
@@ -107,11 +107,11 @@ class Mapa():
                     nowa_mapa[aktualny.x+1][aktualny.y].g = 10 * (nowa_mapa[aktualny.x+1][aktualny.y].x + (nowa_mapa[aktualny.x+1][aktualny.y].y - 1))
                     nowa_mapa[aktualny.x+1][aktualny.y].h = 10 * (abs(nowa_mapa[aktualny.x+1][aktualny.y].x - nowa_mapa[len(nowa_mapa)- 1][len(nowa_mapa)- 1].x) + abs(nowa_mapa[aktualny.x+1][aktualny.y].y - nowa_mapa[len(nowa_mapa)- 1][len(nowa_mapa)- 1].y))
                     nowa_mapa[aktualny.x+1][aktualny.y].suma = nowa_mapa[aktualny.x+1][aktualny.y].g + nowa_mapa[aktualny.x+1][aktualny.y].h
-                    lista_otwarta.append(nowa_mapa[aktualny.x+1][aktualny.y])
+                    list_of_item_otwarta.append(nowa_mapa[aktualny.x+1][aktualny.y])
             except:
                 pass
             try:
-                for Pole in lista_zamknieta:
+                for Pole in list_of_item_zamknieta:
                     if Pole == nowa_mapa[aktualny.x-1][aktualny.y]:
                         znaleziony = 1
                         break
@@ -121,11 +121,11 @@ class Mapa():
                     nowa_mapa[aktualny.x-1][aktualny.y].g = 10 * (nowa_mapa[aktualny.x-1][aktualny.y].x + (nowa_mapa[aktualny.x-1][aktualny.y].y - 1))
                     nowa_mapa[aktualny.x-1][aktualny.y].h = 10 * (abs(nowa_mapa[aktualny.x-1][aktualny.y].x - nowa_mapa[len(nowa_mapa)- 1][len(nowa_mapa)- 1].x) + abs(nowa_mapa[aktualny.x-1][aktualny.y].y - nowa_mapa[len(nowa_mapa)- 1][len(nowa_mapa)- 1].y))
                     nowa_mapa[aktualny.x-1][aktualny.y].suma = nowa_mapa[aktualny.x-1][aktualny.y].g + nowa_mapa[aktualny.x-1][aktualny.y].h
-                    lista_otwarta.append(nowa_mapa[aktualny.x-1][aktualny.y])
+                    list_of_item_otwarta.append(nowa_mapa[aktualny.x-1][aktualny.y])
             except:
                 pass
             try:
-                for Pole in lista_zamknieta:
+                for Pole in list_of_item_zamknieta:
                     if Pole == nowa_mapa[aktualny.x][aktualny.y+1]:
                         znaleziony = 1
                         break
@@ -135,11 +135,11 @@ class Mapa():
                     nowa_mapa[aktualny.x][aktualny.y+1].g = 10 * (nowa_mapa[aktualny.x][aktualny.y+1].x + (nowa_mapa[aktualny.x][aktualny.y+1].y - 1))
                     nowa_mapa[aktualny.x][aktualny.y+1].h = 10 * (abs(nowa_mapa[aktualny.x][aktualny.y+1].x - nowa_mapa[len(nowa_mapa)- 1][len(nowa_mapa)- 1].x) + abs(nowa_mapa[aktualny.x][aktualny.y+1].y - nowa_mapa[len(nowa_mapa)- 1][len(nowa_mapa)- 1].y))
                     nowa_mapa[aktualny.x][aktualny.y+1].suma = nowa_mapa[aktualny.x][aktualny.y+1].g + nowa_mapa[aktualny.x][aktualny.y+1].h
-                    lista_otwarta.append(nowa_mapa[aktualny.x][aktualny.y+1])
+                    list_of_item_otwarta.append(nowa_mapa[aktualny.x][aktualny.y+1])
             except:
                 pass
             try:
-                for Pole in lista_zamknieta:
+                for Pole in list_of_item_zamknieta:
                     if Pole == nowa_mapa[aktualny.x][aktualny.y-1]:
                         znaleziony = 1
                         break
@@ -149,12 +149,12 @@ class Mapa():
                     nowa_mapa[aktualny.x][aktualny.y-1].g = 10 * (nowa_mapa[aktualny.x][aktualny.y-1].x + (nowa_mapa[aktualny.x][aktualny.y-1].y - 1))
                     nowa_mapa[aktualny.x][aktualny.y-1].h = 10 * (abs(nowa_mapa[aktualny.x][aktualny.y-1].x - nowa_mapa[len(nowa_mapa)- 1][len(nowa_mapa)- 1].x) + abs(nowa_mapa[aktualny.x][aktualny.y-1].y - nowa_mapa[len(nowa_mapa)- 1][len(nowa_mapa)- 1].y))
                     nowa_mapa[aktualny.x][aktualny.y-1].suma = nowa_mapa[aktualny.x][aktualny.y-1].g + nowa_mapa[aktualny.x][aktualny.y-1].h
-                    lista_otwarta.append(nowa_mapa[aktualny.x][aktualny.y-1])
+                    list_of_item_otwarta.append(nowa_mapa[aktualny.x][aktualny.y-1])
             except:
                 pass
             
-            lista_otwarta.remove(aktualny)
-            lista_zamknieta.append(aktualny)
+            list_of_item_otwarta.remove(aktualny)
+            list_of_item_zamknieta.append(aktualny)
             if mapa_ok == 1:
                 return True
 
@@ -162,8 +162,8 @@ class Mapa():
     def rysuj_mape(self):
         global poziom_p
         global ile_map
-        funkcje.clear_screen()  # czyszczenie ekranu
-        rysuj_obrazy.rysuj("static/LOGO.txt")
+        Functions.clear_screen()  # czyszczenie ekranu
+        Draw_Images.rysuj("static/LOGO.txt")
         print('\t\t\tDUNGEON LEVEL: ', poziom_p, '\n')
 
         for i in range(len(self.mapa[0])):
@@ -222,8 +222,8 @@ class Mapa():
          
             self.przygotuj_mape()
             self.mapa[0][0] = gr
-            gr.pobierz_pozycje(self)
-            funkcje.widocznosc(gr, self)
+            gr.take_position(self)
+            Functions.widocznosc(gr, self)
             self.rysuj_mape()
         
-            funkcje.poruszanie_po_mapie(gr, self)
+            Functions.poruszanie_po_mapie(gr, self)
