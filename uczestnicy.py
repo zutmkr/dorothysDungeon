@@ -7,17 +7,17 @@ import podziemia
 import pokoj
 import funkcje
 
-prawda_falsz = [True, False]
+true_or_false = [True, False]
 gargulce = 0
 
-class Gracz:
+class Player:
 
     lista = []  # lista przedmiotow
-    pozycja = []
+    position = []
     zadania = []
     punkty = 0
     zloto = 0.0
-    imie = ''
+    name = ''
     
     def __init__(self):
         self.zadania = [0,0,0,0,0,0]
@@ -61,7 +61,7 @@ class Gracz:
 
     def karta_postaci(self):
         funkcje.clear_screen()  # czyszczenie ekranu
-        print('\n\n\t\t', self.imie, 'GREAT WARRIOR\n\n')
+        print('\n\n\t\t', self.name, 'GREAT WARRIOR\n\n')
         with open('static/warrior.txt') as plik:
             print(plik.read())
         self.pokaz_staty()
@@ -72,9 +72,9 @@ class Gracz:
         for i in range(len(maps.mapa)):
             try:
                 if maps.mapa[i].index(self) >= 0:
-                    self.pozycja = []
-                    self.pozycja.append(i)
-                    self.pozycja.append(maps.mapa[i].index(self))
+                    self.position = []
+                    self.position.append(i)
+                    self.position.append(maps.mapa[i].index(self))
             except:
                 continue
 
@@ -97,7 +97,7 @@ class Gracz:
     def sprzedaj_kup(self, kto, wyb, s):
         inp = ''
         if not self.lista:
-            print('(',self.imie,'): I do not have any goods with me...')
+            print('(',self.name,'): I do not have any goods with me...')
             funkcje.get_char()
             
         while inp != '8':
@@ -208,10 +208,10 @@ class Gracz:
     def quest(self,gr):        
         while True:
             funkcje.clear_screen()  # czyszczenie ekranu
-            rysuj_obrazy.rysuj("static/" + self.imie + ".txt")  
+            rysuj_obrazy.rysuj("static/" + self.name + ".txt")  
             od = 1
             do = 3
-            rysuj_obrazy.rysuj_oddo("quests/" + self.imie + ".txt",od,do)
+            rysuj_obrazy.rysuj_oddo("quests/" + self.name + ".txt",od,do)
             print('\tt - YES\tn - NO')
             inp = input()
             if inp == 't':    
@@ -219,31 +219,31 @@ class Gracz:
                     gr.zadania[0] = 1
                     r = random.choice([True, False])
                     if r:   #PIERWSZE ZADANIE
-                        rysuj_obrazy.rysuj_oddo("quests/" + self.imie + ".txt",5,7)
+                        rysuj_obrazy.rysuj_oddo("quests/" + self.name + ".txt",5,7)
                         gr.zadania[1] = 1
                         funkcje.get_char()
-                        print('(' + gr.imie + '): It will be done!')
+                        print('(' + gr.name + '): It will be done!')
                         funkcje.get_char()
                     else:   #DRUGIE ZADANIE
-                        rysuj_obrazy.rysuj_oddo("quests/" + self.imie + ".txt",17,19)
+                        rysuj_obrazy.rysuj_oddo("quests/" + self.name + ".txt",17,19)
                         gr.zadania[1] = 0
                         funkcje.get_char()
-                        print('(' + gr.imie + '): It will be done!')
+                        print('(' + gr.name + '): It will be done!')
                         funkcje.get_char()           
                 else:   #HANDLARZ
                     gr.zadania[3] = 1
                     r = random.choice([True, False])
                     if r:   #PIERWSZE ZADANIE
-                        rysuj_obrazy.rysuj_oddo("quests/" + self.imie + ".txt",5,8)
+                        rysuj_obrazy.rysuj_oddo("quests/" + self.name + ".txt",5,8)
                         gr.zadania[4] = 1
                         funkcje.get_char()
-                        print('(' + gr.imie + '): It will be done!')
+                        print('(' + gr.name + '): It will be done!')
                         funkcje.get_char()
                     else:   #DRUGIE ZADANIE
-                        rysuj_obrazy.rysuj_oddo("quests/" + self.imie + ".txt",22,24)
+                        rysuj_obrazy.rysuj_oddo("quests/" + self.name + ".txt",22,24)
                         gr.zadania[4] = 0
                         funkcje.get_char()
-                        print('(' + gr.imie + '): It will be done!')
+                        print('(' + gr.name + '): It will be done!')
                         funkcje.get_char()
                 return False
             elif inp == 'n':
@@ -251,17 +251,17 @@ class Gracz:
                 funkcje.get_char()
                 return False
             
-class Potwor(Gracz):
-    def __init__(self,imie,s,pz):
-        self.imie = imie
+class Potwor(Player):
+    def __init__(self,name,s,pz):
+        self.name = name
         self.s = s
         self.pz = pz
         self.pmax = pz
 
     def walka_gui(self, status, gr):
         funkcje.clear_screen()
-        rysuj_obrazy.rysuj('static/' + self.imie + '.txt')
-        print('You must fight with ', self.imie, ' ', self.pz, '/', self.pmax, 'LP')
+        rysuj_obrazy.rysuj('static/' + self.name + '.txt')
+        print('You must fight with ', self.name, ' ', self.pz, '/', self.pmax, 'LP')
         print('\t\t\t\t\t\tCOMMANDS')
         print('\t\t\t\t\t\t\tf - Weapon attack')
         print('\t\t\t\t\t\t\tj - Run(25% chance)\n\n')
@@ -269,9 +269,9 @@ class Potwor(Gracz):
         print('Status: ', status)
 
 
-class Uzdrowiciel(Gracz):
+class Uzdrowiciel(Player):
     def __init__(self, gr):
-        self.imie = 'uzdr'
+        self.name = 'uzdr'
         funkcje.clear_screen()  # czyszczenie ekranu
         rysuj_obrazy.rysuj('static/uzdr.txt')
         ile_pkt = 3 * 1.5 * podziemia.poziom_p
@@ -282,11 +282,11 @@ class Uzdrowiciel(Gracz):
         gr.pz += int(ile_pkt)
         funkcje.get_char()
     
-class Handlarz(Gracz):
+class Handlarz(Player):
     def __init__(self):
         self.zloto = 500.0
     lista = []
-    imie = 'handl'
+    name = 'handl'
 
 
 

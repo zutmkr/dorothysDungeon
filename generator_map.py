@@ -88,7 +88,7 @@ def generator():
             ps.set(random.choice([15, 30, 50]))
 
 
-        gr = uczestnicy.Gracz()
+        gr = uczestnicy.Player()
         mapa_odkryta.delete(1.0, END)
         maps = Mapa(map_size)
         maps.przygotuj_mape(map_size)
