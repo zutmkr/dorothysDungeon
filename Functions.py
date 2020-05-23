@@ -7,10 +7,10 @@ import logging
 from math import ceil
 from time import sleep
 
-import pokoj
-import uczestnicy
-import podziemia
-import rysuj_obrazy
+import Room
+import Members
+import Undergrounds
+import Draw_Images
 
 
 logging.basicConfig(filename='error_logs/errors.log', level=logging.DEBUG, format='%(asctime)s %(levelname)s %(name)s %(message)s')
@@ -32,7 +32,7 @@ def sciana():
     status = 'It is a wall.'
     
 def zapisz_gre(gr,maps):
-    data = [gr,maps, podziemia.poziom_p, gr.lista, gr.zadania]
+    data = [gr,maps, Undergrounds.poziom_p, gr.list_of_item, gr.tasks]
     
     with open(PIK, "w+b") as f:
         pickle.dump(len(data), f)
@@ -42,21 +42,21 @@ def zapisz_gre(gr,maps):
 def handel(gr,ha):
     wyb = ''
 
-    ha.dodaj_do_plecak()
-    ha.dodaj_do_plecak()
-    ha.dodaj_do_plecak()
+    ha.add_to_backpack()
+    ha.add_to_backpack()
+    ha.add_to_backpack()
 
     
     while wyb != '0':
         clear_screen()  # czyszczenie ekranu
-        rysuj_obrazy.rysuj('static/handl.txt')
+        Draw_Images.rysuj('static/handl.txt')
         print('\t\tYou meet a merchant!!!\n')
-        print('>How can I help you?\n\t\t\t The dealer has ', ha.zloto, ' gold\n')
+        print('>How can I help you?\n\t\t\t The dealer has ', ha.gold, ' gold\n')
         print('\t1) Show me your goods. (Buy)')
         print('\t2) See what I have. (Sell)')
-        if gr.zadania[3] == 1 and gr.zadania[5] == 1:
+        if gr.tasks[3] == 1 and gr.tasks[5] == 1:
             print('\t3) Give the quest back (Get the prize!)')
-        print('\t0) Goodbye.\t\t Your gold: ', gr.zloto)
+        print('\t0) Goodbye.\t\t Your gold: ', gr.gold)
         print('CURRENT STRENGTH:', gr.s)
         wyb = input('\nYour choice: ')
         s = 0
@@ -64,7 +64,7 @@ def handel(gr,ha):
             ha.sprzedaj_kup(gr,wyb,s)
         elif wyb == '2':
             gr.sprzedaj_kup(ha,wyb,s)
-        elif gr.zadania[3] == 1 and gr.zadania[4] == 1 and gr.zadania[5] == 1:
+        elif gr.tasks[3] == 1 and gr.tasks[4] == 1 and gr.tasks[5] == 1:
             print ("You are POWERFUL! \n\
             Thanks for destroying the last \n\
             representative of his species. Here's the promised \n\
@@ -72,16 +72,16 @@ def handel(gr,ha):
             ###
             # I need to add some kind of sleep or button press for 
             # akcnowledge
-            gr.dodaj_do_plecak()
-            gr.punkty += 10
-            gr.zadania[3] = 0
-            gr.zadania[4] = 0
-            gr.zadania[5] = 0
-            print("You received an item! - ", gr.lista[-1].nazwa)
+            gr.add_to_backpack()
+            gr.points += 10
+            gr.tasks[3] = 0
+            gr.tasks[4] = 0
+            gr.tasks[5] = 0
+            print("You received an item! - ", gr.list_of_item[-1].name)
             ###
             # I need to add some kind of sleep or button press for 
             # akcnowledge
-        elif gr.zadania[3] == 1 and gr.zadania[4] == 0 and gr.zadania[5] == 1:
+        elif gr.tasks[3] == 1 and gr.tasks[4] == 0 and gr.tasks[5] == 1:
             print ("\tYou are GREAT! \n\
             These gargoyles will not come back soon. \n\
             In the end, I will have peace. Here's the promised \n\
@@ -89,30 +89,30 @@ def handel(gr,ha):
             ###
             # I need to add some kind of sleep or button press for 
             # akcnowledge
-            gr.dodaj_do_plecak()
-            gr.punkty += 20
-            gr.zadania[3] = 0
-            gr.zadania[4] = 0
-            gr.zadania[5] = 0
-            uczestnicy.gargulce = 0
-            print("You received an item! - ", gr.lista[-1].nazwa)
+            gr.add_to_backpack()
+            gr.points += 20
+            gr.tasks[3] = 0
+            gr.tasks[4] = 0
+            gr.tasks[5] = 0
+            Members.gargulce = 0
+            print("You received an item! - ", gr.list_of_item[-1].name)
             ###
             # I need to add some kind of sleep or button press for 
             # akcnowledge
     try:
         if random.choice(prawda_falsz):
-            if gr.zadania[3] == 0:
+            if gr.tasks[3] == 0:
                 ha.quest(gr)
     except Exception as e:
         logger.error(e)    
       
 def event(gr, maps):
-    ha = uczestnicy.Handlarz()
-    ha.zloto *= podziemia.poziom_p * 1.25
+    ha = Members.Handlarz()
+    ha.gold *= Undergrounds.poziom_p * 1.25
     p = random.randint(0,3)
     #p = 1
     if p == 0:
-        uczestnicy.Uzdrowiciel(gr)
+        Members.Uzdrowiciel(gr)
     elif p == 1:
         handel(gr,ha)
     else:
@@ -168,7 +168,7 @@ def widocznosc(gr, maps):
 
 def poruszanie_po_mapie(gr, maps):
     global status
-    gr.pobierz_pozycje(maps)
+    gr.take_position(maps)
 
     while True:
         print('Status: ', status)
@@ -187,10 +187,10 @@ def poruszanie_po_mapie(gr, maps):
             d(gr, maps)
             maps.stworz_nowa_mape(gr)
         elif h == 'c':
-            gr.karta_postaci()
+            gr.character_card()
             get_char()
         elif h == 'i':
-            gr.pokaz_plecak()
+            gr.show_backpack()
             get_char()
         elif h == 'g':
             zapisz_gre(gr,maps)
@@ -205,9 +205,9 @@ def poruszanie_po_mapie(gr, maps):
         
 def stala_position(gr, maps):
     global status
-    maps.mapa[gr.position[0]][gr.position[1]] = pokoj.Pokoj()
-    maps.mapa[gr.position[0]][gr.position[1]].przedmiot = False
-    gr.pobierz_pozycje(maps)
+    maps.mapa[gr.position[0]][gr.position[1]] = Room.Pokoj()
+    maps.mapa[gr.position[0]][gr.position[1]].Item = False
+    gr.take_position(maps)
 
 
 def w(gr, maps):
@@ -267,20 +267,20 @@ def rozpocznij_walke(gr):
 
     losuj_potwora = random.randint(1,5)
     if losuj_potwora == 1:
-        potwor = uczestnicy.Potwor('Smok', 13, 30)
+        potwor = Members.Potwor('Smok', 13, 30)
     elif losuj_potwora == 2:
-        potwor = uczestnicy.Potwor('Niedzwiedz', 13, 30)
+        potwor = Members.Potwor('Niedzwiedz', 13, 30)
     elif losuj_potwora == 3:
-        potwor = uczestnicy.Potwor('Gargulec', 13, 30)
-    elif gr.zadania[3] == 1 and gr.zadania[4] == 1 and gr.zadania[5] == 0:
-        potwor = uczestnicy.Potwor('Jezdziec', 6, 45)
+        potwor = Members.Potwor('Gargulec', 13, 30)
+    elif gr.tasks[3] == 1 and gr.tasks[4] == 1 and gr.tasks[5] == 0:
+        potwor = Members.Potwor('Jezdziec', 6, 45)
     else:
-        potwor = uczestnicy.Potwor('Demon', 13, 30)
+        potwor = Members.Potwor('Demon', 13, 30)
 
-    if podziemia.poziom_p > 1:
-        potwor.pz = int(potwor.pz * podziemia.poziom_p * 0.8)
-        potwor.pmax = int(potwor.pmax * podziemia.poziom_p  * 0.8)
-        potwor.s = int(potwor.s * podziemia.poziom_p * 0.6)
+    if Undergrounds.poziom_p > 1:
+        potwor.pz = int(potwor.pz * Undergrounds.poziom_p * 0.8)
+        potwor.pmax = int(potwor.pmax * Undergrounds.poziom_p  * 0.8)
+        potwor.s = int(potwor.s * Undergrounds.poziom_p * 0.6)
 
     status = ''    
     
@@ -292,15 +292,15 @@ def rozpocznij_walke(gr):
             get_char()
             
             dlugosc_poziom = ((9 + len(gr.name)) - 19) * (-1)       #magic numbers...
-            dlugosc_punkty = 33 - 9 - len(gr.name) - dlugosc_poziom
+            dlugosc_points = 33 - 9 - len(gr.name) - dlugosc_poziom
             
             
             with open("score/high_score.txt", "a") as f:
-                f.write("\n         " + gr.name + (" " * dlugosc_poziom) + str(podziemia.poziom_p) + (" " * dlugosc_punkty) + str(gr.punkty))
-            rysuj_obrazy.rysuj_animacja_ciag('animated/gameover/gameover.txt', 0.035)
+                f.write("\n         " + gr.name + (" " * dlugosc_poziom) + str(Undergrounds.poziom_p) + (" " * dlugosc_points) + str(gr.points))
+            Draw_Images.rysuj_animacja_ciag('animated/gameover/gameover.txt', 0.035)
             f.close()
             
-            rysuj_obrazy.rysuj("score/high_score.txt")
+            Draw_Images.rysuj("score/high_score.txt")
             print('\n\n\t\tBegin a new game?')
             print('\t\t1. New game\t2.Main menu \t3. End game')
             while True:
@@ -342,24 +342,24 @@ def rozpocznij_walke(gr):
         if potwor.pz <= 0:
             print('VICTORY!!!')
             if potwor.name == "Jezdziec":
-                ile_wygral = 135.0 * 1.45 * podziemia.poziom_p
-                gr.zadania[5] = 1
-            elif potwor.name == "Gargulec" and gr.zadania[3] == 1 and gr.zadania[4] == 0:
-                ile_wygral = 135.0 * 1.45 * podziemia.poziom_p
-                if uczestnicy.gargulce > 1:
-                    gr.zadania[5] = 1
+                ile_wygral = 135.0 * 1.45 * Undergrounds.poziom_p
+                gr.tasks[5] = 1
+            elif potwor.name == "Gargulec" and gr.tasks[3] == 1 and gr.tasks[4] == 0:
+                ile_wygral = 135.0 * 1.45 * Undergrounds.poziom_p
+                if Members.gargulce > 1:
+                    gr.tasks[5] = 1
                 else:
-                    uczestnicy.gargulce = uczestnicy.gargulce + 1
+                    Members.gargulce = Members.gargulce + 1
             else:
-                ile_wygral = 100.0 * 1.25 * podziemia.poziom_p
+                ile_wygral = 100.0 * 1.25 * Undergrounds.poziom_p
                 
-            gr.zloto += ile_wygral
+            gr.gold += ile_wygral
             if random.choice(prawda_falsz):
-                gr.dodaj_do_plecak()
-                print("You receive {0} gold and {1}.".format(ile_wygral, gr.lista[-1].nazwa))
+                gr.add_to_backpack()
+                print("You receive {0} gold and {1}.".format(ile_wygral, gr.list_of_item[-1].name))
             else:
                 print("You receive ", ile_wygral, " gold.")
-            gr.punkty += 5
+            gr.points += 5
             get_char()
             return
         else:

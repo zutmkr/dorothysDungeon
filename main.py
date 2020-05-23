@@ -2,13 +2,13 @@
 import os
 import sys
 import pickle
-import podziemia
-import uczestnicy
-import funkcje
+import Undergrounds
+import Members
+import Functions
 import platform
 from generator_map import generator, mapsgen
 from pdb import set_trace as bp
-from rysuj_obrazy import rysuj, rysuj_oddo
+from Draw_Images import rysuj, rysuj_oddo
 from config import Version
 
 
@@ -22,7 +22,7 @@ def menu_glowne():
     do = 5  
     
     while True:
-        funkcje.clear_screen()  # czyszczenie ekranu
+        Functions.clear_screen()  # czyszczenie ekranu
         rysuj("static/LOGO.txt")
         print(f"\t Version: {Version.GAME.value}")
         print(f"\t Python : {platform.python_version()}")
@@ -47,36 +47,36 @@ def menu_glowne():
                 wyjdz_z_gry()
    
    
-def nowa_gra(poziom_pgen = None, wielkosc_mapygen = None, punkty_zycia = None, sila = None):
-    gr = uczestnicy.Player()
+def nowa_gra(poziom_pgen = None, wielkosc_mapygen = None, points_zycia = None, sila = None):
+    gr = Members.Player()
     while gr.name == '':
         gr.name = input("\n\tENTER HERO NAME\n\t")
         if len(gr.name) > 9:
             print('NAME TOO LONG. MAX 9 CHARS')
             gr.name = ''
-    funkcje.status = ''
+    Functions.status = ''
 
-    if poziom_pgen is not None or wielkosc_mapygen is not None or punkty_zycia is not None:
-        podziemia.poziom_p = poziom_pgen.get()
+    if poziom_pgen is not None or wielkosc_mapygen is not None or points_zycia is not None:
+        Undergrounds.poziom_p = poziom_pgen.get()
         maps = mapsgen
-        gr.pz = punkty_zycia.get()
+        gr.pz = points_zycia.get()
         gr.s = sila.get()
     else:
-        podziemia.poziom_p = 1
-        maps = podziemia.Mapa()
+        Undergrounds.poziom_p = 1
+        maps = Undergrounds.Mapa()
         maps.przygotuj_mape()
 
     maps.mapa[0][0] = gr
-    gr.pobierz_pozycje(maps)
-    funkcje.widocznosc(gr, maps)
+    gr.take_position(maps)
+    Functions.widocznosc(gr, maps)
     maps.rysuj_mape()
-    funkcje.poruszanie_po_mapie(gr, maps)
+    Functions.poruszanie_po_mapie(gr, maps)
 
     
 def wczytaj_gre():
     data2 = []
-    gr = uczestnicy.Player()
-    maps = podziemia.Mapa()
+    gr = Members.Player()
+    maps = Undergrounds.Mapa()
     
     with open(PIK, "rb") as f:
         for _ in range(pickle.load(f)):
@@ -84,16 +84,16 @@ def wczytaj_gre():
     
     gr = data2[0]
     maps = data2[1]
-    podziemia.poziom_p = data2[2]
-    gr.lista = data2[3]
-    gr.zadania = data2[4]
+    Undergrounds.poziom_p = data2[2]
+    gr.list_of_item = data2[3]
+    gr.tasks = data2[4]
     
     if gr.name == '':
         gr.name = input("ENTER HERO NAME\n\t")
     
-    gr.pobierz_pozycje(maps)
+    gr.take_position(maps)
     maps.rysuj_mape()
-    funkcje.poruszanie_po_mapie(gr, maps)
+    Functions.poruszanie_po_mapie(gr, maps)
 
     
 def wyjdz_z_gry():
@@ -105,7 +105,7 @@ def extra():
     do = 28  
     
     while True:
-        funkcje.clear_screen()  # czyszczenie ekranu
+        Functions.clear_screen()  # czyszczenie ekranu
         rysuj("static/LOGO.txt")
         print(f"\t Version: {Version.GAME.value}")
         print(f"\t Python : {platform.python_version()}")
@@ -131,7 +131,7 @@ def opcje():
     do = 43  
       
     while True:
-        funkcje.clear_screen()  # czyszczenie ekranu
+        Functions.clear_screen()  # czyszczenie ekranu
         rysuj("static/LOGO.txt")
         print(f"\t Version: {Version.GAME.value}")
         print(f"\t Python : {platform.python_version()}")
@@ -146,9 +146,9 @@ def opcje():
             do += 5
         elif inp == 'k':
             if od >=39 and do <=43:
-                funkcje.get_char()
+                Functions.get_char()
             elif od >=43 and do <=48:
-                funkcje.clear_screen()  # czyszczenie ekranu
+                Functions.clear_screen()  # czyszczenie ekranu
                 rysuj("static/O_GRZE.txt")
                 return False
             elif od >=48 and do <=54:
