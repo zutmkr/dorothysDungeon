@@ -48,12 +48,12 @@ def menu_glowne():
    
    
 def nowa_gra(poziom_pgen = None, wielkosc_mapygen = None, punkty_zycia = None, sila = None):
-    gr = uczestnicy.Gracz()
-    while gr.imie == '':
-        gr.imie = input("\n\tENTER HERO NAME\n\t")
-        if len(gr.imie) > 9:
+    gr = uczestnicy.Player()
+    while gr.name == '':
+        gr.name = input("\n\tENTER HERO NAME\n\t")
+        if len(gr.name) > 9:
             print('NAME TOO LONG. MAX 9 CHARS')
-            gr.imie = ''
+            gr.name = ''
     funkcje.status = ''
 
     if poziom_pgen is not None or wielkosc_mapygen is not None or punkty_zycia is not None:
@@ -75,7 +75,7 @@ def nowa_gra(poziom_pgen = None, wielkosc_mapygen = None, punkty_zycia = None, s
     
 def wczytaj_gre():
     data2 = []
-    gr = uczestnicy.Gracz()
+    gr = uczestnicy.Player()
     maps = podziemia.Mapa()
     
     with open(PIK, "rb") as f:
@@ -88,8 +88,8 @@ def wczytaj_gre():
     gr.lista = data2[3]
     gr.zadania = data2[4]
     
-    if gr.imie == '':
-        gr.imie = input("ENTER HERO NAME\n\t")
+    if gr.name == '':
+        gr.name = input("ENTER HERO NAME\n\t")
     
     gr.pobierz_pozycje(maps)
     maps.rysuj_mape()

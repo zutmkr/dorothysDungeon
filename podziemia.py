@@ -215,7 +215,7 @@ class Mapa():
         print('\tMap nr: ', ile_map)
 
     def stworz_nowa_mape(self,gr):
-        if gr.pozycja[0] == len(self.mapa) - 1 and gr.pozycja[1] == len(self.mapa) - 1:
+        if gr.position[0] == len(self.mapa) - 1 and gr.position[1] == len(self.mapa) - 1:
             global poziom_p
             poziom_p += 1
             self = Mapa()

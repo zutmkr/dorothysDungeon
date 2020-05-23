@@ -120,48 +120,48 @@ def event(gr, maps):
 
 def widocznosc(gr, maps):
     # boki dolne
-    if gr.pozycja[0] < len(maps.mapa) and gr.pozycja[1] < len(maps.mapa):
+    if gr.position[0] < len(maps.mapa) and gr.position[1] < len(maps.mapa):
         try:
-            maps.mapa[gr.pozycja[0] + 1][gr.pozycja[1]].widoczny = True
+            maps.mapa[gr.position[0] + 1][gr.position[1]].widoczny = True
         except:
             pass
         try:
-            maps.mapa[gr.pozycja[0] + 1][gr.pozycja[1] + 1].widoczny = True  # dp
+            maps.mapa[gr.position[0] + 1][gr.position[1] + 1].widoczny = True  # dp
         except:
             pass
 
     # boki gorne
-    if gr.pozycja[0] > 0 and gr.pozycja[1] < len(maps.mapa):
+    if gr.position[0] > 0 and gr.position[1] < len(maps.mapa):
         try:
-            maps.mapa[gr.pozycja[0] - 1][gr.pozycja[1]].widoczny = True
+            maps.mapa[gr.position[0] - 1][gr.position[1]].widoczny = True
         except:
             pass
         try:
-            maps.mapa[gr.pozycja[0] - 1][gr.pozycja[1] + 1].widoczny = True  # gp
+            maps.mapa[gr.position[0] - 1][gr.position[1] + 1].widoczny = True  # gp
         except:
             pass
         try:
-            maps.mapa[gr.pozycja[0]][gr.pozycja[1] + 1].widoczny = True
+            maps.mapa[gr.position[0]][gr.position[1] + 1].widoczny = True
         except:
             pass
 
     # bok lewy
-    if gr.pozycja[1] > 0 and gr.pozycja[0] > 0:
+    if gr.position[1] > 0 and gr.position[0] > 0:
         try:
-            maps.mapa[gr.pozycja[0]][gr.pozycja[1] - 1].widoczny = True
+            maps.mapa[gr.position[0]][gr.position[1] - 1].widoczny = True
         except:
             pass
         try:
-            maps.mapa[gr.pozycja[0] + 1][gr.pozycja[1] - 1].widoczny = True  # dl
+            maps.mapa[gr.position[0] + 1][gr.position[1] - 1].widoczny = True  # dl
         except:
             pass
         try:
-            maps.mapa[gr.pozycja[0] - 1][gr.pozycja[1] - 1].widoczny = True  # gl
+            maps.mapa[gr.position[0] - 1][gr.position[1] - 1].widoczny = True  # gl
         except:
             pass
 
     try:
-        maps.mapa[gr.pozycja[0]][gr.pozycja[1] + 1].widoczny = True
+        maps.mapa[gr.position[0]][gr.position[1] + 1].widoczny = True
     except:
         pass
 
@@ -203,61 +203,61 @@ def poruszanie_po_mapie(gr, maps):
         maps.rysuj_mape()        
         
         
-def stala_pozycja(gr, maps):
+def stala_position(gr, maps):
     global status
-    maps.mapa[gr.pozycja[0]][gr.pozycja[1]] = pokoj.Pokoj()
-    maps.mapa[gr.pozycja[0]][gr.pozycja[1]].przedmiot = False
+    maps.mapa[gr.position[0]][gr.position[1]] = pokoj.Pokoj()
+    maps.mapa[gr.position[0]][gr.position[1]].przedmiot = False
     gr.pobierz_pozycje(maps)
 
 
 def w(gr, maps):
-    if gr.pozycja[0] - 1 >= 0 and maps.mapa[gr.pozycja[0] - 1][gr.pozycja[1]].otwarty:
+    if gr.position[0] - 1 >= 0 and maps.mapa[gr.position[0] - 1][gr.position[1]].otwarty:
         try:
-            if maps.mapa[gr.pozycja[0] - 1][gr.pozycja[1]].event:
+            if maps.mapa[gr.position[0] - 1][gr.position[1]].event:
                 event(gr, maps)
         except:
             pass
-        maps.mapa[gr.pozycja[0] - 1][gr.pozycja[1]] = gr
-        stala_pozycja(gr, maps)
+        maps.mapa[gr.position[0] - 1][gr.position[1]] = gr
+        stala_position(gr, maps)
     else:
         sciana()
 
 
 def s(gr, maps):
-    if gr.pozycja[0] + 1 < len(maps.mapa) and maps.mapa[gr.pozycja[0] + 1][gr.pozycja[1]].otwarty:
+    if gr.position[0] + 1 < len(maps.mapa) and maps.mapa[gr.position[0] + 1][gr.position[1]].otwarty:
         try:
-            if maps.mapa[gr.pozycja[0] + 1][gr.pozycja[1]].event:
+            if maps.mapa[gr.position[0] + 1][gr.position[1]].event:
                 event(gr, maps)
         except:
             pass
-        maps.mapa[gr.pozycja[0] + 1][gr.pozycja[1]] = gr
-        stala_pozycja(gr, maps)
+        maps.mapa[gr.position[0] + 1][gr.position[1]] = gr
+        stala_position(gr, maps)
     else:
         sciana()
 
 
 def a(gr, maps):
-    if gr.pozycja[1] - 1 >= 0 and maps.mapa[gr.pozycja[0]][gr.pozycja[1] - 1].otwarty:
+    if gr.position[1] - 1 >= 0 and maps.mapa[gr.position[0]][gr.position[1] - 1].otwarty:
         try:
-            if maps.mapa[gr.pozycja[0]][gr.pozycja[1] - 1].event:
+            if maps.mapa[gr.position[0]][gr.position[1] - 1].event:
                 event(gr, maps)
         except:
             pass
-        maps.mapa[gr.pozycja[0]][gr.pozycja[1] - 1] = gr
-        stala_pozycja(gr, maps)
+        maps.mapa[gr.position[0]][gr.position[1] - 1] = gr
+        stala_position(gr, maps)
     else:
         sciana()
 
 
 def d(gr, maps):
-    if gr.pozycja[1] + 1 < len(maps.mapa) and maps.mapa[gr.pozycja[0]][gr.pozycja[1] + 1].otwarty:
+    if gr.position[1] + 1 < len(maps.mapa) and maps.mapa[gr.position[0]][gr.position[1] + 1].otwarty:
         try:
-            if maps.mapa[gr.pozycja[0] + 1][gr.pozycja[1] + 1].event:
+            if maps.mapa[gr.position[0] + 1][gr.position[1] + 1].event:
                 event(gr, maps)
         except:
             pass
-        maps.mapa[gr.pozycja[0]][gr.pozycja[1] + 1] = gr
-        stala_pozycja(gr, maps)
+        maps.mapa[gr.position[0]][gr.position[1] + 1] = gr
+        stala_position(gr, maps)
     else:
         sciana()        
         
@@ -291,12 +291,12 @@ def rozpocznij_walke(gr):
             print('YOU WERE SLAIN.')
             get_char()
             
-            dlugosc_poziom = ((9 + len(gr.imie)) - 19) * (-1)       #magic numbers...
-            dlugosc_punkty = 33 - 9 - len(gr.imie) - dlugosc_poziom
+            dlugosc_poziom = ((9 + len(gr.name)) - 19) * (-1)       #magic numbers...
+            dlugosc_punkty = 33 - 9 - len(gr.name) - dlugosc_poziom
             
             
             with open("score/high_score.txt", "a") as f:
-                f.write("\n         " + gr.imie + (" " * dlugosc_poziom) + str(podziemia.poziom_p) + (" " * dlugosc_punkty) + str(gr.punkty))
+                f.write("\n         " + gr.name + (" " * dlugosc_poziom) + str(podziemia.poziom_p) + (" " * dlugosc_punkty) + str(gr.punkty))
             rysuj_obrazy.rysuj_animacja_ciag('animated/gameover/gameover.txt', 0.035)
             f.close()
             
@@ -319,7 +319,7 @@ def rozpocznij_walke(gr):
 
         while True:
             if h == 'f':
-                status = 'You attack ' + str(potwor.imie) + ' for ' + str(gr.s) + ' damage!'
+                status = 'You attack ' + str(potwor.name) + ' for ' + str(gr.s) + ' damage!'
                 potwor.walka_gui(status, gr)
                 get_char()
                 potwor.pz -= gr.s
@@ -341,10 +341,10 @@ def rozpocznij_walke(gr):
 
         if potwor.pz <= 0:
             print('VICTORY!!!')
-            if potwor.imie == "Jezdziec":
+            if potwor.name == "Jezdziec":
                 ile_wygral = 135.0 * 1.45 * podziemia.poziom_p
                 gr.zadania[5] = 1
-            elif potwor.imie == "Gargulec" and gr.zadania[3] == 1 and gr.zadania[4] == 0:
+            elif potwor.name == "Gargulec" and gr.zadania[3] == 1 and gr.zadania[4] == 0:
                 ile_wygral = 135.0 * 1.45 * podziemia.poziom_p
                 if uczestnicy.gargulce > 1:
                     gr.zadania[5] = 1
@@ -363,7 +363,7 @@ def rozpocznij_walke(gr):
             get_char()
             return
         else:
-            status = str(potwor.imie) + ' attack you for ' + str(potwor.s) + ' damage!'
+            status = str(potwor.name) + ' attack you for ' + str(potwor.s) + ' damage!'
             gr.pz -= potwor.s
             if gr.pz <= 0:
                 gr.pz = 0        
