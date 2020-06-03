@@ -1,5 +1,6 @@
 ![Logo](https://github.com/zutmkr/Studia/blob/master/praca_inz/static/logo.PNG)
 
+[![Run on Repl.it](https://repl.it/badge/github/zutmkr/dorothysDungeon)](https://repl.it/github/zutmkr/dorothysDungeon)
 
 # (Beta v0.3.0.170520.0):
 ### [CODE REFACTOR]:
