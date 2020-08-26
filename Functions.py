@@ -107,7 +107,7 @@ def handel(gr,ha):
         logger.error(e)    
       
 def event(gr, maps):
-    ha = Members.Handlarz()
+    ha = Members.Merchant()
     ha.gold *= Undergrounds.poziom_p * 1.25
     p = random.randint(0,3)
     #p = 1
