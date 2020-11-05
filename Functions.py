@@ -172,7 +172,7 @@ def poruszanie_po_mapie(gr, maps):
 
     while True:
         print('Status: ', status)
-        if gr.pz == 0:
+        if gr.life_points == 0:
             sys.exit(0)
         h = input('\n\nQuo vadis?>')
 
@@ -286,7 +286,7 @@ def rozpocznij_walke(gr):
     
 
     while True:
-        if gr.pz == 0:
+        if gr.life_points == 0:
             potwor.walka_gui(status, gr)
             print('YOU WERE SLAIN.')
             get_char()
@@ -364,7 +364,7 @@ def rozpocznij_walke(gr):
             return
         else:
             status = str(potwor.name) + ' attack you for ' + str(potwor.s) + ' damage!'
-            gr.pz -= potwor.s
-            if gr.pz <= 0:
-                gr.pz = 0        
+            gr.life_points -= potwor.s
+            if gr.life_points <= 0:
+                gr.life_points = 0        
 
