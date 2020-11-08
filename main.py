@@ -59,7 +59,7 @@ def nowa_gra(poziom_pgen = None, wielkosc_mapygen = None, points_zycia = None, s
     if poziom_pgen is not None or wielkosc_mapygen is not None or points_zycia is not None:
         Undergrounds.poziom_p = poziom_pgen.get()
         maps = mapsgen
-        gr.pz = points_zycia.get()
+        gr.life_points = points_zycia.get()
         gr.s = sila.get()
     else:
         Undergrounds.poziom_p = 1

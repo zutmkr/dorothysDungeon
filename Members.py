@@ -252,11 +252,11 @@ class Player:
                 return False
             
 class Potwor(Player):
-    def __init__(self,name,s,pz):
+    def __init__(self,name, s, life_points):
         self.name = name
         self.strength = s
-        self.life_points = pz
-        self.pmax = pz
+        self.life_points = life_points
+        self.pmax = life_points
 
     def walka_gui(self, status, gr):
         Functions.clear_screen()
@@ -265,7 +265,7 @@ class Potwor(Player):
         print('\t\t\t\t\t\tCOMMANDS')
         print('\t\t\t\t\t\t\tf - Weapon attack')
         print('\t\t\t\t\t\t\tj - Run(25% chance)\n\n')
-        print('\t\t\t\t\t\t\tYour HP: ', gr.pz)
+        print('\t\t\t\t\t\t\tYour HP: ', gr.life_points)
         print('Status: ', status)
 
 
@@ -279,7 +279,7 @@ class Uzdrowiciel(Player):
         print('You receive', int(ile_pkt), 'additional LIFE POINTS')
         #Functions.quest()
         
-        gr.pz += int(ile_pkt)
+        gr.life_points += int(ile_pkt)
         Functions.get_char()
     
 class Merchant(Player):

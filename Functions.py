@@ -281,7 +281,7 @@ def rozpocznij_walke(gr):
         potwor = Members.Potwor('Demon', 13, 30)
 
     if Undergrounds.poziom_p > 1:
-        potwor.pz = int(potwor.pz * Undergrounds.poziom_p * 0.8)
+        potwor.life_points = int(potwor.life_points * Undergrounds.poziom_p * 0.8)
         potwor.pmax = int(potwor.pmax * Undergrounds.poziom_p  * 0.8)
         potwor.s = int(potwor.s * Undergrounds.poziom_p * 0.6)
 
@@ -325,7 +325,7 @@ def rozpocznij_walke(gr):
                 status = 'You attack ' + str(potwor.name) + ' for ' + str(gr.s) + ' damage!'
                 potwor.walka_gui(status, gr)
                 get_char()
-                potwor.pz -= gr.s
+                potwor.life_points -= gr.s
                 break
             elif h == 'j':
                 b = random.randrange(1, 13)
@@ -342,7 +342,7 @@ def rozpocznij_walke(gr):
                 potwor.walka_gui(status, gr)
                 h = input('\n\nCommand?>')
 
-        if potwor.pz <= 0:
+        if potwor.life_points <= 0:
             print('VICTORY!!!')
             if potwor.name == "Jezdziec":
                 ile_wygral = 135.0 * 1.45 * Undergrounds.poziom_p
