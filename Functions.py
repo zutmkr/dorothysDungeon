@@ -21,8 +21,11 @@ prawda_falsz = [True, False]
 status = ''
 PIK = "save/objects.bj"
 
-def get_char():
-    input(f'Press any key to continue...')
+def get_char(skip_text=True):
+    if skip_text:
+      input(f'Press any key to continue...')
+    else:
+      input()
 
 def clear_screen():
 	os.system('clear')

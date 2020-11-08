@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 import os
+import os.path
 import sys
 import pickle
 import Undergrounds
@@ -7,7 +8,6 @@ import Members
 import Functions
 import platform
 from generator_map import generator, mapsgen
-from pdb import set_trace as bp
 from Draw_Images import rysuj, rysuj_oddo
 from config import Version
 
@@ -74,26 +74,31 @@ def nowa_gra(poziom_pgen = None, wielkosc_mapygen = None, points_zycia = None, s
 
     
 def wczytaj_gre():
-    data2 = []
-    gr = Members.Player()
-    maps = Undergrounds.Mapa()
-    
-    with open(PIK, "rb") as f:
+    if (os.path.exists(PIK)):
+      data2 = []
+      gr = Members.Player()
+      maps = Undergrounds.Mapa()
+
+      with open(PIK, "rb") as f:
         for _ in range(pickle.load(f)):
             data2.append(pickle.load(f))
-    
-    gr = data2[0]
-    maps = data2[1]
-    Undergrounds.poziom_p = data2[2]
-    gr.list_of_item = data2[3]
-    gr.tasks = data2[4]
-    
-    if gr.name == '':
-        gr.name = input("ENTER HERO NAME\n\t")
-    
-    gr.take_position(maps)
-    maps.rysuj_mape()
-    Functions.poruszanie_po_mapie(gr, maps)
+            gr = data2[0]
+            maps = data2[1]
+            Undergrounds.poziom_p = data2[2]
+            gr.list_of_item = data2[3]
+            gr.tasks = data2[4]
+            
+            if gr.name == '':
+                gr.name = input("ENTER HERO NAME\n\t")
+            
+            gr.take_position(maps)
+            maps.rysuj_mape()
+            Functions.poruszanie_po_mapie(gr, maps)
+    else:
+      Functions.clear_screen()
+      rysuj("static/error_msg/load_save_error")
+      Functions.get_char(False)
+      return
 
     
 def wyjdz_z_gry():
