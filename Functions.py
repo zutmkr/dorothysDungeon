@@ -4,7 +4,6 @@ import os
 import sys
 import pickle
 import logging
-from math import ceil
 from time import sleep
 
 import Room
@@ -60,7 +59,7 @@ def handel(gr,ha):
         if gr.tasks[3] == 1 and gr.tasks[5] == 1:
             print('\t3) Give the quest back (Get the prize!)')
         print('\t0) Goodbye.\t\t Your gold: ', gr.gold)
-        print('CURRENT STRENGTH:', gr.s)
+        print('CURRENT STRENGTH:', gr.strength)
         wyb = input('\nYour choice: ')
         s = 0
         if wyb == '1':
@@ -231,8 +230,9 @@ def s(gr, maps):
         try:
             if maps.mapa[gr.position[0] + 1][gr.position[1]].event:
                 event(gr, maps)
-        except:
-            pass
+        except Exception as e:  
+          print('ERROR Cannot launch event: '+ str(e))
+          get_char()
         maps.mapa[gr.position[0] + 1][gr.position[1]] = gr
         stala_position(gr, maps)
     else:
@@ -283,7 +283,7 @@ def rozpocznij_walke(gr):
     if Undergrounds.poziom_p > 1:
         potwor.life_points = int(potwor.life_points * Undergrounds.poziom_p * 0.8)
         potwor.pmax = int(potwor.pmax * Undergrounds.poziom_p  * 0.8)
-        potwor.s = int(potwor.s * Undergrounds.poziom_p * 0.6)
+        potwor.strength = int(potwor.strength * Undergrounds.poziom_p * 0.6)
 
     status = ''    
     
@@ -322,10 +322,10 @@ def rozpocznij_walke(gr):
 
         while True:
             if h == 'f':
-                status = 'You attack ' + str(potwor.name) + ' for ' + str(gr.s) + ' damage!'
+                status = 'You attack ' + str(potwor.name) + ' for ' + str(gr.strength) + ' damage!'
                 potwor.walka_gui(status, gr)
                 get_char()
-                potwor.life_points -= gr.s
+                potwor.life_points -= gr.strength
                 break
             elif h == 'j':
                 b = random.randrange(1, 13)
@@ -366,8 +366,8 @@ def rozpocznij_walke(gr):
             get_char()
             return
         else:
-            status = str(potwor.name) + ' attack you for ' + str(potwor.s) + ' damage!'
-            gr.life_points -= potwor.s
+            status = str(potwor.name) + ' attack you for ' + str(potwor.strength) + ' damage!'
+            gr.life_points -= potwor.strength
             if gr.life_points <= 0:
                 gr.life_points = 0        
 

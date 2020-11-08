@@ -56,8 +56,8 @@ class Player:
                 print(plik.read())
 
     def show_backpack(self):
-        for Item in self.list_of_item:
-            print(Item.name)
+        for item in self.list_of_item:
+            print(item.name)
 
     def character_card(self):
         Functions.clear_screen()  # czyszczenie ekranu
@@ -95,115 +95,115 @@ class Player:
             
 
     def sprzedaj_kup(self, kto, wyb, s):
-        inp = ''
-        if not self.list_of_item:
-            print('(',self.name,'): I do not have any goods with me...')
-            Functions.get_char()
-            
-        while inp != '8':
-            if not self.list_of_item:
-                break
-    
-            for Item in self.list_of_item:
-                Item.name = '   ' + Item.name
-    
-            self.list_of_item[s].name = self.list_of_item[s].name.lstrip()
-            self.list_of_item[s].name = '-> ' + self.list_of_item[s].name
-    
-            Functions.clear_screen()  # czyszczenie ekranu
-            print('Choose what interests you:')
-            print('\t\t\t\t\t\tINSTRUCTIONS')
-            print('\t\t\t\t\t\t\tw - arrow up')
-            print('\t\t\t\t\t\t\ts - arrow down')
-            if type(self) is Merchant: 
-                print('\t\t   BUY\t\t\t\tk - buy item')
-            else:
-                print('\t\tSELL\t\t\t\tk - sell item')
-            print('\t\t\t\t\t\t\t8 - go back to the conversation with the trader')
-            if type(self) is Merchant:
-                print('\t\tYour gold:', kto.gold, '\n')
-            else:
-                print('\t\tYour gold:', self.gold, '\n')
-            for Item in self.list_of_item:
-                dlugosc_str = 34 - len(Item.name)
-                print('\t', Item.name, ' ' * dlugosc_str, Item.value, ' gold')
-    
-            inp = input()
-            if inp == 'w':
-                s -= 1
-                try:
-                    if s < 0:
-                        s = 0
-                        self.list_of_item[s + 1].name = self.list_of_item[s + 1].name.lstrip()
-                        self.list_of_item[s + 1].name = self.list_of_item[s + 1].name.lstrip('-> ')
-                        self.list_of_item[s + 1].name = '   ' + self.list_of_item[s + 1].name
-                        self.list_of_item[s].name = self.list_of_item[s].name.lstrip()
-                        self.list_of_item[s].name = self.list_of_item[s].name.lstrip('-> ')
-                        self.list_of_item[s].name = '-> ' + self.list_of_item[s].name
-                    else:
-                        self.list_of_item[s + 1].name = self.list_of_item[s + 1].name.lstrip()
-                        self.list_of_item[s + 1].name = self.list_of_item[s + 1].name.lstrip('-> ')
-                        self.list_of_item[s + 1].name = '   ' + self.list_of_item[s + 1].name
-                        self.list_of_item[s].name = self.list_of_item[s].name.lstrip()
-                        self.list_of_item[s].name = self.list_of_item[s].name.lstrip('-> ')
-                        self.list_of_item[s].name = '-> ' + self.list_of_item[s].name
-                except:
-                    pass
-            elif inp == 's':
-                s += 1
-                try:
-                    if s > len(self.list_of_item) - 1:
-                        s = len(self.list_of_item) - 1
-                        self.list_of_item[s - 1].name = self.list_of_item[s - 1].name.lstrip()
-                        self.list_of_item[s - 1].name = self.list_of_item[s - 1].name.lstrip('-> ')
-                        self.list_of_item[s - 1].name = '   ' + self.list_of_item[s - 1].name
-                        self.list_of_item[s].name = self.list_of_item[s].name.lstrip()
-                        self.list_of_item[s].name = self.list_of_item[s].name.lstrip('-> ')
-                        self.list_of_item[s].name = '-> ' + self.list_of_item[s].name
-                    else:
-                        self.list_of_item[s - 1].name = self.list_of_item[s - 1].name.lstrip()
-                        self.list_of_item[s - 1].name = self.list_of_item[s - 1].name.lstrip('-> ')
-                        self.list_of_item[s - 1].name = '   ' + self.list_of_item[s - 1].name
-                        self.list_of_item[s].name = self.list_of_item[s].name.lstrip()
-                        self.list_of_item[s].name = self.list_of_item[s].name.lstrip('-> ')
-                        self.list_of_item[s].name = '-> ' + self.list_of_item[s].name
-                except:
-                    pass
-            elif inp == 'k':
-                if type(self) is Merchant:
-                    for Item in self.list_of_item:
-                        if not Item.name.find('-> '):
-                            if kto.gold < Item.value:
-                                print("I can not afford it, I have too little GOLD!")
-                                Functions.get_char()
-                                break
-                            Item.name = Item.name.lstrip('-> ')
-                            self.gold += Item.value
-                            kto.gold -= Item.value
-                            kto.list_of_item.append(Item)
-                            if not Item.name.find('legendary'):
-                                kto.s += 5
-                            self.list_of_item.remove(Item)
-                            s = 0
-                else:
-                    for Item in self.list_of_item:
-                        if not Item.name.find('-> '):
-                            if kto.gold < Item.value:
-                                print("The merchant does not have so much GOLD to buy it!")
-                                Functions.get_char()
-                                break
-                            Item.name = Item.name.lstrip('-> ')
-                            self.gold += Item.value
-                            kto.gold -= Item.value
-                            kto.list_of_item.append(Item)
-                            if not Item.name.find('legendary'):
-                                self.strength -= 5
-                            self.list_of_item.remove(Item)
-                            s = 0
-                            
-            for Item in self.list_of_item:
-                Item.name = Item.name.lstrip()
-                Item.name = Item.name.lstrip('-> ')
+      inp = ''
+      if not self.list_of_item:
+          print('(',self.name,'): I do not have any goods with me...')
+          Functions.get_char()
+          
+      while inp != '8':
+          if not self.list_of_item:
+              break
+  
+          for item in self.list_of_item:
+              item.name = '   ' + item.name
+  
+          self.list_of_item[s].name = self.list_of_item[s].name.lstrip()
+          self.list_of_item[s].name = '-> ' + self.list_of_item[s].name
+  
+          Functions.clear_screen()  # czyszczenie ekranu
+          print('Choose what interests you:')
+          print('\t\t\t\t\t\tINSTRUCTIONS')
+          print('\t\t\t\t\t\t\tw - arrow up')
+          print('\t\t\t\t\t\t\ts - arrow down')
+          if type(self) is Merchant: 
+              print('\t\t   BUY\t\t\t\tk - buy item')
+          else:
+              print('\t\tSELL\t\t\t\tk - sell item')
+          print('\t\t\t\t\t\t\t8 - go back to the conversation with the trader')
+          if type(self) is Merchant:
+              print('\t\tYour gold:', kto.gold, '\n')
+          else:
+              print('\t\tYour gold:', self.gold, '\n')
+          for item in self.list_of_item:
+              dlugosc_str = 34 - len(item.name)
+              print('\t', item.name, ' ' * dlugosc_str, item.value, ' gold')
+  
+          inp = input()
+          if inp == 'w':
+              s -= 1
+              try:
+                  if s < 0:
+                      s = 0
+                      self.list_of_item[s + 1].name = self.list_of_item[s + 1].name.lstrip()
+                      self.list_of_item[s + 1].name = self.list_of_item[s + 1].name.lstrip('-> ')
+                      self.list_of_item[s + 1].name = '   ' + self.list_of_item[s + 1].name
+                      self.list_of_item[s].name = self.list_of_item[s].name.lstrip()
+                      self.list_of_item[s].name = self.list_of_item[s].name.lstrip('-> ')
+                      self.list_of_item[s].name = '-> ' + self.list_of_item[s].name
+                  else:
+                      self.list_of_item[s + 1].name = self.list_of_item[s + 1].name.lstrip()
+                      self.list_of_item[s + 1].name = self.list_of_item[s + 1].name.lstrip('-> ')
+                      self.list_of_item[s + 1].name = '   ' + self.list_of_item[s + 1].name
+                      self.list_of_item[s].name = self.list_of_item[s].name.lstrip()
+                      self.list_of_item[s].name = self.list_of_item[s].name.lstrip('-> ')
+                      self.list_of_item[s].name = '-> ' + self.list_of_item[s].name
+              except:
+                  pass
+          elif inp == 's':
+              s += 1
+              try:
+                  if s > len(self.list_of_item) - 1:
+                      s = len(self.list_of_item) - 1
+                      self.list_of_item[s - 1].name = self.list_of_item[s - 1].name.lstrip()
+                      self.list_of_item[s - 1].name = self.list_of_item[s - 1].name.lstrip('-> ')
+                      self.list_of_item[s - 1].name = '   ' + self.list_of_item[s - 1].name
+                      self.list_of_item[s].name = self.list_of_item[s].name.lstrip()
+                      self.list_of_item[s].name = self.list_of_item[s].name.lstrip('-> ')
+                      self.list_of_item[s].name = '-> ' + self.list_of_item[s].name
+                  else:
+                      self.list_of_item[s - 1].name = self.list_of_item[s - 1].name.lstrip()
+                      self.list_of_item[s - 1].name = self.list_of_item[s - 1].name.lstrip('-> ')
+                      self.list_of_item[s - 1].name = '   ' + self.list_of_item[s - 1].name
+                      self.list_of_item[s].name = self.list_of_item[s].name.lstrip()
+                      self.list_of_item[s].name = self.list_of_item[s].name.lstrip('-> ')
+                      self.list_of_item[s].name = '-> ' + self.list_of_item[s].name
+              except:
+                  pass
+          elif inp == 'k':
+              if type(self) is Merchant:
+                  for item in self.list_of_item:
+                      if not item.name.find('-> '):
+                          if kto.gold < item.value:
+                              print("I can not afford it, I have too little GOLD!")
+                              Functions.get_char()
+                              break
+                          item.name = item.name.lstrip('-> ')
+                          self.gold += item.value
+                          kto.gold -= item.value
+                          kto.list_of_item.append(item)
+                          if not item.name.find('legendary'):
+                              kto.strength += 5
+                          self.list_of_item.remove(item)
+                          s = 0
+              else:
+                  for item in self.list_of_item:
+                      if not item.name.find('-> '):
+                          if kto.gold < item.value:
+                              print("The merchant does not have so much GOLD to buy it!")
+                              Functions.get_char()
+                              break
+                          item.name = item.name.lstrip('-> ')
+                          self.gold += item.value
+                          kto.gold -= item.value
+                          kto.list_of_item.append(item)
+                          if not item.name.find('legendary'):
+                              self.strength -= 5
+                          self.list_of_item.remove(item)
+                          s = 0
+                          
+          for item in self.list_of_item:
+              item.name = item.name.lstrip()
+              item.name = item.name.lstrip('-> ')
         
     def quest(self,gr):        
         while True:
