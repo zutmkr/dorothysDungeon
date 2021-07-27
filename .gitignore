@@ -108,4 +108,4 @@ venv.bak/
 .vs/
 .vscode/
 mapy/
-score/high_score.txt
+*high_score.txt

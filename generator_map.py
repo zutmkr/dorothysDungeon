@@ -1,10 +1,10 @@
 # -*- coding: utf-8 -*-
 import os, os.path
 import random
-import uczestnicy
+import Members
 import fnmatch
 from datetime import date
-from podziemia import Mapa
+from Undergrounds import Mapa
 from config import Version
 
 mapsgen = 0
@@ -44,14 +44,14 @@ def zapisz_mape(map_view):
     f.close()
 
 
-def zagraj(poziom_pgen, wielkosc_mapygen, punkty_zycia, sila, okno):
+def zagraj(poziom_pgen, wielkosc_mapygen, points_zycia, sila, okno):
     global mapsgen
     if mapsgen == 0:
         messagebox.showinfo("ERROR", "Generate map first to play it!")
     else:    
         okno.destroy()
         from main import nowa_gra
-        nowa_gra(poziom_pgen, wielkosc_mapygen, punkty_zycia, sila)
+        nowa_gra(poziom_pgen, wielkosc_mapygen, points_zycia, sila)
       
 def generator():
     def losuj():
@@ -88,7 +88,7 @@ def generator():
             ps.set(random.choice([15, 30, 50]))
 
 
-        gr = uczestnicy.Gracz()
+        gr = Members.Player()
         mapa_odkryta.delete(1.0, END)
         maps = Mapa(map_size)
         maps.przygotuj_mape(map_size)
