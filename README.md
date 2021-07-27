@@ -1,8 +1,20 @@
-![Logo](https://github.com/zutmkr/Studia/blob/master/praca_inz/static/logo.PNG)
+                   ___                _   _           _         ___                                    
+                  /   \___  _ __ ___ | |_| |__  _   _( )__     /   \_   _ _ __   __ _  ___  ___  _ __  
+                 / /\ / _ \| '__/ _ \| __| '_ \| | | |/ __|   / /\ / | | | '_ \ / _` |/ _ \/ _ \| '_ \ 
+                / /_// (_) | | | (_) | |_| | | | |_| |\__ \  / /_//| |_| | | | | (_| |  __/ (_) | | | |
+               /___,' \___/|_|  \___/ \__|_| |_|\__, ||___/ /___,'  \__,_|_| |_|\__, |\___|\___/|_| |_| 
+                                                |___/                           |___/                    
 
-<details><summary>BETA STAGE CHANGELOG - Linux</summary></details>
+[![Run on Repl.it](https://repl.it/badge/github/zutmkr/dorothysDungeon)](https://repl.it/github/zutmkr/dorothysDungeon)
 
-# (Beta v0.3.0.170520.0):
+# (Beta v0.3.2.210727.0):
+### [MISC]:
+        + last release for linux
+        + master moved to branch last_linux
+
+<details><summary>BETA STAGE CHANGELOG</summary>
+<p>
+# (Beta v0.3.0.200517.0):
 ### [CODE REFACTOR]:
         + renamed some functions to their linux counterpatrs
         + game is playable (somewhat...)
@@ -11,23 +23,20 @@
 ### [MISC]:
         + updated and created .gitignores
 
-<details><summary>BETA STAGE CHANGELOG</summary>
-<p>
 # (Beta v0.2.1.191004.0):
 ### [CODE REFACTOR]:
 ### [MAP GENERATOR v0.06]:
-        + removed unnecessary code   
-        + redone save_map() function 
+        + removed unnecessary code  
+        + redone save_map() function  
         + code translation in progress...  
 ### [MISC]:
         + updated .gitignore  
 
-
 # (Beta v0.2.1.191004.0):
 ### [CODE REFACTOR]:
 ### [MAP GENERATOR v0.06]:
-        + removed unnecessary code   
-        + redone save_map() function 
+        + removed unnecessary code  
+        + redone save_map() function  
         + code translation in progress...  
 ### [MISC]:
         + updated .gitignore  
@@ -47,7 +56,7 @@
         + variable naming refactored and translated  
         + added more map sizes  
 ### [MISC]:
-        + updated .gitignore          
+        + updated .gitignore  
 
 # (Beta v0.2.1.190918.1):
 ### [CODE REFACTOR]:
@@ -93,7 +102,7 @@
         + map is generated in three variants of size  
 ### [KNOWN BUGS]:
         + selecting the 'new game' on the death screen takes you to the Main menu  
-         ++ fixed (python turned out to use '__main__ import' to use initializer script methods)
+         ++ fixed (python turned out to use '__main__ import' to use initializer script methods)  
 </p>
 </details>
 
