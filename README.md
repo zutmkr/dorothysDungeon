@@ -7,7 +7,14 @@
 
 [![Run on Repl.it](https://repl.it/badge/github/zutmkr/dorothysDungeon)](https://repl.it/github/zutmkr/dorothysDungeon)
 
-# (Beta v0.3.0.170520.0):
+# (Beta v0.3.2.210727.0):
+### [MISC]:
+        + last release for linux
+        + master moved to branch last_linux
+
+<details><summary>BETA STAGE CHANGELOG</summary>
+<p>
+# (Beta v0.3.0.200517.0):
 ### [CODE REFACTOR]:
         + renamed some functions to their linux counterpatrs
         + game is playable (somewhat...)
@@ -15,9 +22,6 @@
         + Do not work
 ### [MISC]:
         + updated and created .gitignores
-
-<details><summary>BETA STAGE CHANGELOG</summary>
-<p>
 
 # (Beta v0.2.1.191004.0):
 ### [CODE REFACTOR]:
