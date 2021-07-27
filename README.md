@@ -10,7 +10,7 @@
 # (Beta v0.3.2.210727.0):
 ### [MISC]:
         + last release for linux
-        + master moved to branch last_linux
+        + master moved to branch linux
 
 <details><summary>BETA STAGE CHANGELOG</summary>
 <p>
