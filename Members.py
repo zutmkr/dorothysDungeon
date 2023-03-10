@@ -37,23 +37,23 @@ class Player:
     
     def show_tasks(self):
         if self.tasks[3] == 1 and self.tasks[4] == 1 and self.tasks[5] == 0:
-            with open('quests/zadH1.txt', encoding="utf8") as plik:
-                print(plik.read())
+            with open('quests/zadH1.txt', encoding="utf8") as file:
+                print(file.read())
         elif self.tasks[3] == 1 and self.tasks[4] == 1 and self.tasks[5] == 1:
-            with open('quests/zadH11.txt', encoding="utf8") as plik:
-                print(plik.read())
+            with open('quests/zadH11.txt', encoding="utf8") as file:
+                print(file.read())
         elif self.tasks[3] == 1 and self.tasks[4] == 0 and gargulce == 0:
-            with open('quests/zadH2.txt', encoding="utf8") as plik:
-                print(plik.read())
+            with open('quests/zadH2.txt', encoding="utf8") as file:
+                print(file.read())
         elif self.tasks[3] == 1 and self.tasks[4] == 0 and gargulce == 1:
-            with open('quests/zadH21.txt', encoding="utf8") as plik:
-                print(plik.read())
+            with open('quests/zadH21.txt', encoding="utf8") as file:
+                print(file.read())
         elif self.tasks[3] == 1 and self.tasks[4] == 0 and gargulce > 1:
-            with open('quests/zadH22.txt', encoding="utf8") as plik:
-                print(plik.read())
+            with open('quests/zadH22.txt', encoding="utf8") as file:
+                print(file.read())
         else:
-            with open('quests/brak.txt', encoding="utf8") as plik:
-                print(plik.read())
+            with open('quests/brak.txt', encoding="utf8") as file:
+                print(file.read())
 
     def show_backpack(self):
         for item in self.list_of_item:
@@ -62,8 +62,8 @@ class Player:
     def character_card(self):
         Functions.clear_screen()  # czyszczenie ekranu
         print('\n\n\t\t', self.name, 'GREAT WARRIOR\n\n')
-        with open('static/warrior.txt') as plik:
-            print(plik.read())
+        with open('static/warrior.txt') as file:
+            print(file.read())
         self.show_stats()
         self.show_tasks()
         
@@ -113,13 +113,13 @@ class Player:
           Functions.clear_screen()  # czyszczenie ekranu
           print('Choose what interests you:')
           print('\t\t\t\t\t\tINSTRUCTIONS')
-          print('\t\t\t\t\t\t\tw - arrow up')
-          print('\t\t\t\t\t\t\ts - arrow down')
+          print('\t\t\t\t\t\tw - arrow up')
+          print('\t\t\t\t\t\ts - arrow down')
           if type(self) is Merchant: 
               print('\t\t   BUY\t\t\t\tk - buy item')
           else:
-              print('\t\tSELL\t\t\t\tk - sell item')
-          print('\t\t\t\t\t\t\t8 - go back to the conversation with the trader')
+              print('\t\tSELL\t\t\tk - sell item')
+          print('\t\t\t\t\t\t8 - go back to the conversation with the trader')
           if type(self) is Merchant:
               print('\t\tYour gold:', kto.gold, '\n')
           else:
@@ -208,7 +208,7 @@ class Player:
     def quest(self,gr):        
         while True:
             Functions.clear_screen()  # czyszczenie ekranu
-            Draw_Images.rysuj("static/" + self.name + ".txt")  
+            Draw_Images.draw("static/" + self.name + ".txt")  
             od = 1
             do = 3
             Draw_Images.rysuj_oddo("quests/" + self.name + ".txt",od,do)
@@ -260,7 +260,7 @@ class Potwor(Player):
 
     def walka_gui(self, status, gr):
         Functions.clear_screen()
-        Draw_Images.rysuj('static/' + self.name + '.txt')
+        Draw_Images.draw('static/' + self.name + '.txt')
         print('You must fight with ', self.name, ' ', self.life_points, '/', self.pmax, 'LP')
         print('\t\t\t\t\t\tCOMMANDS')
         print('\t\t\t\t\t\t\tf - Weapon attack')
@@ -273,7 +273,7 @@ class Uzdrowiciel(Player):
     def __init__(self, gr):
         self.name = 'uzdr'
         Functions.clear_screen()  # czyszczenie ekranu
-        Draw_Images.rysuj('static/uzdr.txt')
+        Draw_Images.draw('static/uzdr.txt')
         ile_pkt = 3 * 1.5 * Undergrounds.poziom_p
         print('You meet the Healer!!!')
         print('You receive', int(ile_pkt), 'additional LIFE POINTS')

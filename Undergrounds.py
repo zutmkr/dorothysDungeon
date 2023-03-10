@@ -163,7 +163,7 @@ class Mapa():
         global poziom_p
         global ile_map
         Functions.clear_screen()  # czyszczenie ekranu
-        Draw_Images.rysuj("static/LOGO.txt")
+        Draw_Images.draw("static/LOGO.txt")
         print('\t\t\tDUNGEON LEVEL: ', poziom_p, '\n')
 
         for i in range(len(self.mapa[0])):

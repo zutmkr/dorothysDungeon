@@ -50,7 +50,7 @@ def handel(gr,ha):
     
     while wyb != '0':
         clear_screen()  # czyszczenie ekranu
-        Draw_Images.rysuj('static/handl.txt')
+        Draw_Images.draw('static/handl.txt')
         print('\t\tYou meet a merchant!!!\n')
         print('>How can I help you?\n\t\t\t The dealer has ', ha.gold, ' gold\n')
         print('\t1) Show me your goods. (Buy)')
@@ -302,7 +302,7 @@ def rozpocznij_walke(gr):
             Draw_Images.rysuj_animacja_ciag('animated/gameover/gameover.txt', 0.035)
             f.close()
             
-            Draw_Images.rysuj("score/high_score.txt")
+            Draw_Images.draw("score/high_score.txt")
             print('\n\n\t\tBegin a new game?')
             print('\t\t1. New game\t2.Main menu \t3. End game')
             while True:

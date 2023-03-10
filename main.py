@@ -8,7 +8,7 @@ import Members
 import Functions
 import platform
 from generator_map import generator, mapsgen
-from Draw_Images import rysuj, rysuj_oddo
+from Draw_Images import draw, rysuj_oddo
 from config import Version
 
 
@@ -17,16 +17,16 @@ PIK = "save/objects.bj"
 os.system('mode con: cols=115 lines=55')
 
 
-def menu_glowne():
+def main_menu():
     od = 0
     do = 5  
     
     while True:
         Functions.clear_screen()  # czyszczenie ekranu
-        rysuj("static/LOGO.txt")
+        draw("static/LOGO.txt")
         print(f"\t Version: {Version.GAME.value}")
         print(f"\t Python : {platform.python_version()}")
-        rysuj("lang/PL/menu_glowne_instrukcje.txt")
+        draw("lang/PL/menu_glowne_instrukcje.txt")
         rysuj_oddo("lang/PL/menu_glowne.txt",od,do)
     
         keyboard_key = Functions.getkey()
@@ -37,19 +37,19 @@ def menu_glowne():
             od += 6
             do += 6
         elif keyboard_key == 'esc':
-            wyjdz_z_gry()
+            quit_game()
         elif keyboard_key=='return':
             if od >=0 and do <=6:
-                nowa_gra()
+                new_game()
             elif od >=6 and do <=12:
-                wczytaj_gre()
+                load_game()
             elif od >=12 and do <=18:
                 extra()
             elif od >=18 and do <=24:
-                wyjdz_z_gry()
+                quit_game()
    
    
-def nowa_gra(poziom_pgen = None, wielkosc_mapygen = None, points_zycia = None, sila = None):
+def new_game(poziom_pgen = None, wielkosc_mapygen = None, points_zycia = None, sila = None):
     gr = Members.Player()
     while gr.name == '':
         gr.name = input("\n\tENTER HERO NAME\n\t")
@@ -75,7 +75,7 @@ def nowa_gra(poziom_pgen = None, wielkosc_mapygen = None, points_zycia = None, s
     Functions.poruszanie_po_mapie(gr, maps)
 
     
-def wczytaj_gre():
+def load_game():
     if (os.path.exists(PIK)):
       data2 = []
       gr = Members.Player()
@@ -98,12 +98,12 @@ def wczytaj_gre():
             Functions.poruszanie_po_mapie(gr, maps)
     else:
       Functions.clear_screen()
-      rysuj("static/error_msg/load_save_error")
+      draw("static/error_msg/load_save_error")
       Functions.get_char(False)
       return
 
     
-def wyjdz_z_gry():
+def quit_game():
     sys.exit(0)
 
     
@@ -113,10 +113,10 @@ def extra():
     
     while True:
         Functions.clear_screen()  # czyszczenie ekranu
-        rysuj("static/LOGO.txt")
+        draw("static/LOGO.txt")
         print(f"\t Version: {Version.GAME.value}")
         print(f"\t Python : {platform.python_version()}")
-        rysuj("lang/PL/menu_glowne_instrukcje.txt")
+        draw("lang/PL/menu_glowne_instrukcje.txt")
         rysuj_oddo("lang/PL/menu_glowne.txt",od,do)
         keyboard_key = Functions.getkey()
         if keyboard_key == 'w' and od >= 28:
@@ -141,10 +141,10 @@ def opcje():
       
     while True:
         Functions.clear_screen()  # czyszczenie ekranu
-        rysuj("static/LOGO.txt")
+        draw("static/LOGO.txt")
         print(f"\t Version: {Version.GAME.value}")
         print(f"\t Python : {platform.python_version()}")
-        rysuj("lang/PL/menu_glowne_instrukcje.txt")
+        draw("lang/PL/menu_glowne_instrukcje.txt")
         rysuj_oddo("lang/PL/menu_glowne.txt",od,do)
         keyboard_key = Functions.getkey()
         if keyboard_key == 'w' and od >= 43:
@@ -160,10 +160,10 @@ def opcje():
                 Functions.get_char()
             elif od >=43 and do <=48:
                 Functions.clear_screen()  # czyszczenie ekranu
-                rysuj("static/O_GRZE.txt")
+                draw("static/O_GRZE.txt")
                 Functions.get_char() 
             elif od >=48 and do <=54:
                 return
     
 if __name__ == "__main__":
-    menu_glowne()
+    main_menu()
