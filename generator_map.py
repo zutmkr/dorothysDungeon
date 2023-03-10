@@ -6,6 +6,8 @@ import fnmatch
 from datetime import date
 from Undergrounds import Mapa
 from config import Version
+from tkinter import *
+from tkinter import messagebox, ttk, filedialog
 
 mapsgen = 0
 WINDOW_TITLE = f"Dorothy's Dungeon Map Generator {Version.MAP_GENERATOR.value}"
