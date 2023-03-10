@@ -1,4 +1,4 @@
                                                     INSTRUCTIONS
                                                 w - up arrow
                                                 s - down arrow
-                                                k - accept the choice
+                                                Enter - accept the choice
