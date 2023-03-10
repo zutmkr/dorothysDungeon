@@ -28,15 +28,17 @@ def menu_glowne():
         print(f"\t Python : {platform.python_version()}")
         rysuj("lang/PL/menu_glowne_instrukcje.txt")
         rysuj_oddo("lang/PL/menu_glowne.txt",od,do)
-        
-        inp = input()
-        if inp == 'w' and od >= 6:
+    
+        keyboard_key = Functions.getkey()
+        if keyboard_key=='w' and od >= 6:
             od -= 6
             do -= 6
-        elif inp == 's' and od >= 0 and do < 23:
+        elif keyboard_key=='s' and od >= 0 and do < 23:
             od += 6
             do += 6
-        elif inp == 'k':
+        elif keyboard_key == 'esc':
+            wyjdz_z_gry()
+        elif keyboard_key=='return':
             if od >=0 and do <=6:
                 nowa_gra()
             elif od >=6 and do <=12:
@@ -116,20 +118,22 @@ def extra():
         print(f"\t Python : {platform.python_version()}")
         rysuj("lang/PL/menu_glowne_instrukcje.txt")
         rysuj_oddo("lang/PL/menu_glowne.txt",od,do)
-        inp = input()
-        if inp == 'w' and od >= 28:
+        keyboard_key = Functions.getkey()
+        if keyboard_key == 'w' and od >= 28:
             od -= 5
             do -= 5
-        elif inp == 's' and od >= 24 and do < 37:
+        elif keyboard_key == 's' and od >= 24 and do < 37:
             od += 5
             do += 5
-        elif inp == 'k':
+        elif keyboard_key == 'esc':
+            return
+        elif keyboard_key == 'return':
             if od >=24 and do <=28:
                 generator()
             elif od >=28 and do <=34:
                 opcje()
             elif od >=34 and do <=39:
-                menu_glowne()
+                return
                 
 def opcje():
     od = 39
@@ -142,22 +146,24 @@ def opcje():
         print(f"\t Python : {platform.python_version()}")
         rysuj("lang/PL/menu_glowne_instrukcje.txt")
         rysuj_oddo("lang/PL/menu_glowne.txt",od,do)
-        inp = input()
-        if inp == 'w' and od >= 43:
+        keyboard_key = Functions.getkey()
+        if keyboard_key == 'w' and od >= 43:
             od -= 5
             do -= 5
-        elif inp == 's' and od >= 39 and do < 52:
+        elif keyboard_key == 's' and od >= 39 and do < 52:
             od += 5
             do += 5
-        elif inp == 'k':
+        elif keyboard_key == 'esc':
+            return
+        elif keyboard_key == 'return':
             if od >=39 and do <=43:
                 Functions.get_char()
             elif od >=43 and do <=48:
                 Functions.clear_screen()  # czyszczenie ekranu
                 rysuj("static/O_GRZE.txt")
-                return False
+                Functions.get_char() 
             elif od >=48 and do <=54:
-                extra()
+                return
     
 if __name__ == "__main__":
     menu_glowne()
