@@ -11,7 +11,7 @@ from tkinter import messagebox, ttk, filedialog
 
 mapsgen = 0
 WINDOW_TITLE = f"Dorothy's Dungeon Map Generator {Version.MAP_GENERATOR.value}"
-WINDOW_RESOLUTION = "630x500"
+WINDOW_RESOLUTION = "700x600"
 
 
 def licz_pliki(adres):

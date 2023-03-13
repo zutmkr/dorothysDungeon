@@ -1,53 +1,53 @@
-    ** *MAIN MENU* **
-     ->  [NEW GAME]
-          CONTINUE
-           EXTRA
-         QUIT GAME
+     ** *MAIN MENU* **
+     ->  [new game]
+          continue
+           extra
+         quit game
            
-    ** *MAIN MENU* **
-          NEW GAME
-     ->  [CONTINUE]
-           EXTRA
-         QUIT GAME
+     ** *MAIN MENU* **
+          new game
+     ->  [continue]
+           extra
+         quit game
 
-    ** *MAIN MENU* **
-          NEW GAME
-          CONTINUE
-     ->   [EXTRA]
-         QUIT GAME
+     ** *MAIN MENU* **
+          new game
+          continue
+     ->   [extra]
+         quit game
 
-    ** *MAIN MENU* **
-          NEW GAME
-          CONTINUE
-           EXTRA
-     -> [QUIT GAME]
+     ** *MAIN MENU* **
+          new game
+          continue
+           extra
+     -> [quit game]
      
        ** * EXTRA * **
-     -> [DUNGEON EDITOR]
-           OPTIONS
-            BACK
+     -> [dungeon editor]
+           options
+            back
      
        ** * EXTRA * **
-         DUNGEON EDITOR
-     ->   [OPTIONS]
-            BACK
+         dungeon editor
+     ->   [options]
+            back
      
        ** * EXTRA * **
-         DUNGEON EDITOR
-           OPTIONS
-     ->    [BACK]
+         dungeon editor
+           options
+     ->    [back]
      
        ** *OPTIONS* **
-     -> [GAME LANGUAGE (Not yet available)]
-          ABOUT GAME
-            BACK
+     -> [game language (not yet available)]
+          about game
+            back
            
        ** *OPTIONS* **
-         GAME LANGUAGE (Not yet available)
-     ->  [ABOUT GAME]
-            BACK
+         game language (not yet available)
+     ->  [about game]
+            back
      
        ** *OPTIONS* **
-         GAME LANGUAGE (Not yet available)
-          ABOUT GAME
-     ->    [BACK]
+         game language (not yet available)
+          about game
+     ->    [back]
