@@ -9,6 +9,7 @@ import Room
 import Members
 import Undergrounds
 import Draw_Images
+import Functions
 
 
 logging.basicConfig(filename='error_logs/errors.log', level=logging.DEBUG, format='%(asctime)s %(levelname)s %(name)s %(message)s')
@@ -43,14 +44,20 @@ def zapisz_gre(gr,maps):
 def handel(gr,ha):
     wyb = ''
 
-    ha.add_to_backpack()
-    ha.add_to_backpack()
-    ha.add_to_backpack()
+    if len(ha.list_of_item) < 12:
+        ha.add_to_backpack()
+        ha.add_to_backpack()
+        ha.add_to_backpack()
+    else:
+        del ha.list_of_item[:3]
+        ha.add_to_backpack()
+        ha.add_to_backpack()
+        ha.add_to_backpack()
 
     
     while wyb != '0':
         clear_screen()  # czyszczenie ekranu
-        Draw_Images.rysuj('static/handl.txt')
+        Draw_Images.draw('static/handl.txt')
         print('\t\tYou meet a merchant!!!\n')
         print('>How can I help you?\n\t\t\t The dealer has ', ha.gold, ' gold\n')
         print('\t1) Show me your goods. (Buy)')
@@ -70,26 +77,18 @@ def handel(gr,ha):
             Thanks for destroying the last \n\
             representative of his species. Here's the promised \n\
             prize.")
-            ###
-            # I need to add some kind of sleep or button press for 
-            # akcnowledge
             gr.add_to_backpack()
             gr.points += 10
             gr.tasks[3] = 0
             gr.tasks[4] = 0
             gr.tasks[5] = 0
             print("You received an item! - ", gr.list_of_item[-1].name)
-            ###
-            # I need to add some kind of sleep or button press for 
-            # akcnowledge
+            get_char()
         elif gr.tasks[3] == 1 and gr.tasks[4] == 0 and gr.tasks[5] == 1:
             print ("\tYou are GREAT! \n\
             These gargoyles will not come back soon. \n\
             In the end, I will have peace. Here's the promised \n\
             prize.")
-            ###
-            # I need to add some kind of sleep or button press for 
-            # akcnowledge
             gr.add_to_backpack()
             gr.points += 20
             gr.tasks[3] = 0
@@ -97,9 +96,7 @@ def handel(gr,ha):
             gr.tasks[5] = 0
             Members.gargulce = 0
             print("You received an item! - ", gr.list_of_item[-1].name)
-            ###
-            # I need to add some kind of sleep or button press for 
-            # akcnowledge
+            get_char()
     try:
         if random.choice(prawda_falsz):
             if gr.tasks[3] == 0:
@@ -175,28 +172,28 @@ def poruszanie_po_mapie(gr, maps):
         print('Status: ', status)
         if gr.life_points == 0:
             sys.exit(0)
-        h = input('\n\nQuo vadis?>')
-
-        if h == 'w':
+        print('\n\nQuo vadis?>')
+        keyboard_key = Functions.getkey()
+        if keyboard_key == 'w':
             w(gr, maps)
-        elif h == 's':
+        elif keyboard_key == 's':
             s(gr, maps)
-            maps.stworz_nowa_mape(gr)
-        elif h == 'a':
+            #maps.stworz_nowa_mape(gr)
+        elif keyboard_key == 'a':
             a(gr, maps)
-        elif h == 'd':
+        elif keyboard_key == 'd':
             d(gr, maps)
-            maps.stworz_nowa_mape(gr)
-        elif h == 'c':
+            #maps.stworz_nowa_mape(gr)
+        elif keyboard_key == 'c':
             gr.character_card()
             get_char()
-        elif h == 'i':
+        elif keyboard_key == 'i':
             gr.show_backpack()
             get_char()
-        elif h == 'g':
+        elif keyboard_key == 'g':
             zapisz_gre(gr,maps)
             print('See you hero!')
-            sleep(2)
+            get_char()
             sys.exit(0)
         else:
             status = 'You walk along the wrong path!'
@@ -302,17 +299,17 @@ def rozpocznij_walke(gr):
             Draw_Images.rysuj_animacja_ciag('animated/gameover/gameover.txt', 0.035)
             f.close()
             
-            Draw_Images.rysuj("score/high_score.txt")
+            Draw_Images.draw("score/high_score.txt")
             print('\n\n\t\tBegin a new game?')
             print('\t\t1. New game\t2.Main menu \t3. End game')
             while True:
                 d = input('\t\tYour choice?>')
                 if d == '1':
-                    from __main__ import nowa_gra
-                    nowa_gra()
+                    from __main__ import new_game
+                    new_game()
                 elif d == '2':
-                    from __main__ import menu_glowne
-                    menu_glowne()
+                    from __main__ import main_menu
+                    main_menu()
                 elif d == '3':
                     sys.exit(0)
    
@@ -391,7 +388,10 @@ def getkey():
                 67: 'right',
                 68: 'left',
                 97: 'a',
+                99: 'c',
                 100: 'd',
+                103: 'g',
+                105: 'i',
                 115: 's',
                 119: 'w'
             }
