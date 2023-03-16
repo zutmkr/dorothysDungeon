@@ -305,8 +305,8 @@ def rozpocznij_walke(gr):
             while True:
                 d = input('\t\tYour choice?>')
                 if d == '1':
-                    from __main__ import new_game
-                    new_game()
+                    from __main__ import start_new_game
+                    start_new_game()
                 elif d == '2':
                     from __main__ import main_menu
                     main_menu()

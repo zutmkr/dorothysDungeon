@@ -98,7 +98,7 @@ class Player:
         keyboard_key = ''
         if not self.list_of_item:
             print('(',self.name,'): I do not have any goods with me...')
-            Functions.getch()
+            Functions.get_char()
 
         while keyboard_key != 'esc':
             if not self.list_of_item:
