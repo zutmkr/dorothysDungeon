@@ -20,24 +20,71 @@ prawda_falsz = [True, False]
 status = ''
 PIK = "save/objects.bj"
 
+def random_bool():
+    """
+    Generate a random boolean value.
+
+    Returns:
+        bool: A randomly selected boolean value.
+
+    """
+    # Choose a random boolean value from the list [True, False].
+    return random.choice([True, False])
+
 def get_char(skip_text=True):
+    """
+    Wait for user input and return the character entered by the user.
+
+    Args:
+        skip_text (bool): If True, prompt the user to press Enter key to continue.
+
+    Returns:
+        str: The character entered by the user.
+
+    """
     if skip_text:
-      input(f'Press Enter key to continue...')
+        # Prompt the user to press Enter key to continue.
+        input('Press Enter key to continue...')
     else:
-      input()
+        # Wait for user input.
+        input()
+    # Return the character entered by the user.
+    return input()
+
 
 def clear_screen():
-	os.system('clear')
-	
+    """
+    Clear the terminal screen.
+
+    """
+    os.system('clear')
+
 def sciana():
+    """
+    Set the global status variable to indicate that the player has hit a wall.
+
+    """
     global status
     status = 'It is a wall.'
-    
-def zapisz_gre(gr,maps):
-    data = [gr,maps, Undergrounds.poziom_p, gr.list_of_item, gr.tasks]
-    
+
+def zapisz_gre(gr, maps):
+    """
+    Save the game state to a binary file using the pickle module.
+
+    Args:
+        gr (Game): The current game state.
+        maps (Map): The current map state.
+
+    """
+    # Create a list of data to be pickled.
+    data = [gr, maps, Undergrounds.poziom_p, gr.list_of_item, gr.tasks]
+
+    # Open the binary file in write mode.
     with open(PIK, "w+b") as f:
+        # Write the length of the data list as the first pickle object.
         pickle.dump(len(data), f)
+
+        # Write each item in the data list as a separate pickle object.
         for value in data:
             pickle.dump(value, f)
             
